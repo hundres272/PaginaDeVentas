@@ -1,0 +1,58 @@
+#marco-producto {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px;
+    margin: 5px 40px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    /* justify-content: center; */
+    align-items: center;
+}
+#marco-producto > img {
+    width: 10vw;
+    height: 8vw;
+    padding-right: 4%;
+}
+.descripcion-producto-compra {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    /* justify-content: center; */
+}
+.descripcion-producto-compra > h2 {
+    margin: 3px;
+}
+.descripcion-producto-precio {
+    width: 30%;
+    /* border: 1px solid red; */
+    /* margin-left: 50px; */
+    /* text-align: right; */
+}
+.descripcion-producto-precio > p {
+    margin: 0;
+    padding: 0;
+    text-align: start;
+}
+#menos, #mas {
+    margin: 0px 10px;
+    border-radius: 10px;
+}
+#menos:hover {
+    background-color: rgb(252, 65, 65);
+    /* border: none; */
+}
+#menos:focus, #mas:focus {
+    outline: none;
+}
+.basurero {
+    width: 25px !important;
+    height: 26px !important;
+    cursor: pointer;
+}
+.basurero:hover {
+    width: 26px !important;
+    height: 27px !important;
+}

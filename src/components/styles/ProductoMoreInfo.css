@@ -1,0 +1,76 @@
+.producto-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.column-prod {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+#image-more-info {
+    width: 40vw;
+}
+#price-color {
+    color: red;
+    font-size: 2em;
+    margin: 0;
+}
+.column-prod img {
+    margin-right: 5vw;
+}
+.description-prod {
+    border: 1px solid rgb(0, 0, 0); 
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;     */
+    justify-content: center;
+    padding: 10px 20px;
+}
+.description-prod select {
+    align-items: center;
+}
+#mySelect {
+    padding: 5px 10px;
+    /* margin-right: 5vh; */
+    width: 80%;
+    font-size: .8rem;
+}
+.btn-more {
+    margin: 20px 0px;
+    width: 100%;
+    padding: calc(2px+3em);
+
+}
+.btn-more:focus {
+    outline: none;
+}
+.btn-enviado {
+    margin: 20px 0px;
+    width: 100%;
+    padding: calc(2px+3em);
+    background-color: tomato;
+    border: none;
+    cursor: inherit;
+}
+.btn-enviado:hover {
+    background-color: tomato;
+    border: none;
+}
+.btn-enviado:focus {
+    outline: none;
+}
+.text-info {
+    text-align: left;
+    margin: 0;
+    padding: 5px 0px;
+    font-size: 1.5em;
+}
+.text-content {
+    text-align: center;
+    /* background-color: tomato; */
+}

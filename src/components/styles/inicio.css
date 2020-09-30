@@ -1,0 +1,35 @@
+.main-inicio {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    text-align: center;
+    /* background-color: red; */
+    height: auto;
+}
+.main-inicio a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* border: 1px solid red; */
+    width: 98.8vw;
+    height: 25vw;
+}
+#galeria {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#galeria:hover {
+    filter: opacity(.99);
+}
+
+.contenedor:hover #galeria {
+    -webkit-transform:scale(.99);
+    transform:scale(.99);
+}
+.contenedor {
+    overflow:hidden;
+}

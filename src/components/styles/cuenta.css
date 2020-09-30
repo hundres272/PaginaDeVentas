@@ -1,0 +1,58 @@
+.bodyAcount {
+    background-color: #26908bfa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* text-align: center; */
+    color: white;
+}
+#fondo-form {
+    background-color: red;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 40px;
+}
+#fondo-form > a {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.centrar-texto {
+    text-align: center;
+}
+#a-crear-cuenta {
+    display: flex;
+    text-align: center;
+    margin: 20px 0px;
+    color: white;
+}
+.logoAcount {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    display: flex;
+    padding: 10px;
+    width: 20vw;
+    margin: 10px 0px;
+    /* text-align: center; */
+}
+.register {
+    /* text-align: center; */
+    width: 100%;
+    margin-top: 30px;
+    background-color: #a22f0c;
+    border: none;
+    color: white;
+    justify-content: center;
+    cursor: pointer;
+}
+.register:focus {
+    outline: none;
+}

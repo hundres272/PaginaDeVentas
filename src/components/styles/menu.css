@@ -1,0 +1,78 @@
+header {
+    display: flex;
+    flex-direction: column;
+}
+.icono-nombre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#title-componentes {
+    margin-left: 20px;
+}
+.barra-cuenta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2vh 0vh;
+}
+.cuenta-carrito {
+    display: flex;
+    flex-direction: row;
+}
+
+.barra-productos {
+    background: rgba(128, 128, 128, 0.26);
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+li{
+    /* background-color: red; */
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+li:hover {
+    background-color: rgba(128, 128, 128, 0.4);
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.ingresoAutorizado {
+    font-weight: bold;
+}
+.menu-cuenta-invisible {
+    display: none;
+}
+.menu-cuenta-visible {
+    /* display: flex; */
+    float: left;
+    position: absolute;
+    /* display: grid; */
+    border: 1px solid green;
+    flex-direction: column;
+    list-style: none;
+    background-color: rgba(146, 133, 133, 0.829);
+    color: black;
+    border-radius: 5px;
+    border-color: black;
+}
+.menu-cuenta-visible ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    border-radius: 20px;
+}
+.menu-cuenta-visible li {
+    /* background-color: red; */
+    display: block;
+    flex-direction: column;
+}
+.menu-cuenta-visible li:hover {
+    background-color: rgb(102, 98, 98);
+}

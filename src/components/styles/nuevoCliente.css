@@ -1,0 +1,66 @@
+#crear-cuenta {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: chocolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#fondo-crear-cuenta {
+    background-color: red;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 40px;
+}
+
+
+#fondo-crear-cuenta > a {
+    justify-content: center;
+    align-items: center;
+}
+#mensaje-registro-exitoso {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(59, 168, 59, .4);
+    color: black;
+    height: 100vh;
+    font-size: 1.5rem;
+}
+#continuar-home {
+    display: flex;
+    background-color: red;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.usuario-existe {
+    display: flex;
+    position: absolute;
+    left: 70%;
+    top: 30%;
+    background-color: red;
+    padding: 20px;
+    width: auto;
+    /* border-radius: 10px; */
+    color: white;
+    text-align: center;
+}
+/* #fondo-crear-cuenta > div {
+    align-items: center;
+    justify-content: center;
+} */
+.usuario-no-existe {
+    display: none;
+}
+#cerrar {
+    display: flex;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    cursor: pointer;
+}
