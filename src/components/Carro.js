@@ -4,7 +4,7 @@ import './styles/carro.css';
 
 function Carro () {
     const [priceSum,setPriceSum] = useState(0);
-    if(localStorage.getItem("lista")!=="[]"){
+    if(localStorage.getItem("lista")!=="[]" && localStorage.getItem("lista")!==null){
         const carrito = JSON.parse(localStorage.getItem("lista"));
     
         var sum = 0;
@@ -28,6 +28,41 @@ function Carro () {
             }
             setPriceSum(sum);
         }
+
+        function continuarPedido(){
+            if(leerCookie("usuario")!==null){
+                const carrito = JSON.parse(localStorage.getItem("lista"));
+                const data = [];
+                data.push({"user":leerCookie("usuario")});
+                for (let i = 0; i < carrito.length; i++) {
+                    data.push({"producto":carrito[i].id,"cantidad":carrito[i].candAdd});
+                }
+                fetch("http://localhost:8000/carro", {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                // }).then(res => console.log("asdf"))
+                .then(res2 => {
+                    console.log(res2.status)
+                })
+                .catch(error => console.error('Error:', error))
+                // console.log(data)
+            }else{
+                window.location='/cuenta';
+            }
+        }
+
+        var leerCookie = function (key) {
+            const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+            if (keyValue) {
+                return keyValue[2];
+            } else {
+                return null;
+            }
+        }
         return(
             <>
                 <h1 className="title-carro">Carro</h1>
@@ -49,7 +84,7 @@ function Carro () {
                             <h3>Total </h3>
                             <p>$ {new Intl.NumberFormat("de-DE").format(priceSum+envio)} cop</p>
                         </div>
-                        <button id="boton-terminar-compra">Terminar compra</button>
+                        <button id="boton-terminar-compra" onClick={continuarPedido}>Terminar compra</button>
                     </aside>
                 </main>
             </>

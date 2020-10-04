@@ -14,6 +14,8 @@ import Carro from './components/Carro';
 import Footer from './components/Footer';
 import ProductoMoreInfo from './components/ProductoMoreInfo';
 import NuevoCliente from './components/NuevoCliente';
+import Perfil from './components/Perfil';
+import Pedidos from './components/Pedidos';
 
 function App() {
   const urlMouse = 'http://localhost:8000/mouse';
@@ -81,6 +83,12 @@ function App() {
               </Route>
               <Route path="/productos/audifonos/:Id">
                 <ProductoMoreInfo list={setProducto} />
+              </Route>
+              <Route path="/perfil">
+                <Perfil />
+              </Route>
+              <Route path="/pedidos">
+                <Pedidos />
               </Route>
            </Switch>
           </Router>

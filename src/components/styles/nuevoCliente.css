@@ -1,21 +1,24 @@
+:root {
+    --fondo: rgb(54, 177, 85);
+}
 #crear-cuenta {
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-color: chocolate;
+    background-color: var(--fondo);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 #fondo-crear-cuenta {
-    background-color: red;
+    background-color: var(--fondo);
+    box-shadow: 1px 1px 30px 20px rgba(1,1,1,.4);
     border-radius: 20px;
     padding: 10px 20px;
     margin-top: 40px;
 }
-
 
 #fondo-crear-cuenta > a {
     justify-content: center;
@@ -63,4 +66,51 @@
     right: 5px;
     top: 0;
     cursor: pointer;
+}
+.register {
+    /* text-align: center; */
+    width: 100%;
+    margin-top: 30px;
+    background-color: #30851b;
+    border: none;
+    color: white;
+    justify-content: center;
+    cursor: pointer;
+}
+.register:focus {
+    outline: none;
+}
+#input-verificacion {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(30, 201, 81, .3);
+}
+#interno-verificacion {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 1px 1px 10px 10px rgba(0,0,0,.3);
+    background-color:  rgba(30, 201, 81, .4);
+}
+#input-code-ver {
+    text-align: center;
+    margin: 10px 0px;
+}
+#interno-verificacion > h2 {
+    margin: 20px;
+}
+#input-code-ver:focus {
+    outline: none;
+}
+#verificar-boton {
+    /* display: flex; */
+    background-color:rgba(71, 223, 172, 0.5);
+    padding: 8px 0px;
+}
+#verificar-boton:hover {
+    background-color:rgba(30, 201, 81, .9);
 }

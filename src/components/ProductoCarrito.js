@@ -12,7 +12,7 @@ function ProductoCarrito({id,code,image,name,cant,description,price,candAdd,chan
     }
     
     function cantidadMenos(){
-        if(cantidad!==1){
+        if(parseInt(cantidad,10)!==1){
             setCantidad(parseInt(cantidad,10)-1);
             carrito[posicion].candAdd = parseInt(cantidad)-1;
             localStorage.setItem("lista",JSON.stringify(carrito));

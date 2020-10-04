@@ -15,7 +15,6 @@ var leerCookie = function (key) {
     }
 }
 
-
 function Menu() {
     const [step1,setStep] = useState(0);
     function menuVisible(){
@@ -27,6 +26,12 @@ function Menu() {
     }
   
     // console.log(document.getElementsByClassName("barra-productos"));
+    function perfil(){
+        window.location='/perfil';
+    }
+    function pedidos(){
+        window.location='/pedidos';
+    }
     return(
         <header>
             <div className="barra-cuenta">
@@ -43,9 +48,11 @@ function Menu() {
                             <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text={leerCookie("usuario")} />
                             <div className={`${step1===0 ? 'menu-cuenta-invisible' : 'menu-cuenta-visible'}`}>
                                 <ul>
-                                    <li>Configuracion</li>
-                                    <li>Cambiar algo</li>
-                                    <li onClick={()=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";}}>Cerrar sesión</li>
+                                    <li onClick={perfil}>Perfil</li>
+                                    <li onClick={pedidos}>Pedidos</li>
+                                    <li onClick={()=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        window.location='/';}}>Cerrar sesión</li>
                                 </ul>
                             </div>
                             </section>
