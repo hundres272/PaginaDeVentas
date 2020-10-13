@@ -12,6 +12,7 @@ function NuevoCliente(){
     const [passwordCorrectMay,setPasswordCorrectMay] = useState(null);
     const [passwordCorrectNum,setPasswordCorrectNum] = useState(null);
     const [passwordCorrectTam,setPasswordCorrectTam] = useState(null);
+    const [loading, setLoading] = useState(false);
     function handleSubmit(e){
         const data = {
             name: `${e.target.lname.value}`,
@@ -21,6 +22,7 @@ function NuevoCliente(){
         setName(e.target.lname.value);
         setEmail(e.target.email.value);
         if(emailCorrect===null && passwordCorrect!==null){
+            setLoading(true);
             fetch('http://localhost:8000/nuevoCliente', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -31,6 +33,7 @@ function NuevoCliente(){
             .then(res => res.json())
             .then(data => {
                 // document.cookie = data.cookie;
+                setLoading(false);
                 setStatus(data.status);
                 // console.log("asdf "+status)
             })
@@ -154,6 +157,7 @@ function NuevoCliente(){
                     </div>
                     <a href="/cuenta" id="a-crear-cuenta">Ya tengo cuenta. Ingresar.</a>
                 </div>
+                <div className={loading===true?'loading-user':'loading-none'}>Loading...</div>
             </div>
         )
     }else if(status==='Cliente agregado'){

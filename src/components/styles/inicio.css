@@ -33,3 +33,29 @@
 .contenedor {
     overflow:hidden;
 }
+.boton-flecha {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.514);
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    z-index: 100;
+    left: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.boton-flecha:focus {
+    outline: none;
+}
+.boton-flecha:hover {
+    background-color: rgba(255, 0, 0, 0.925);
+}
+.main-inicio > .boton-flecha {
+    margin-top: 11vw;
+}
+.boton-flecha-r {
+    left: calc(100vw - 70px);
+    /* position: absolute;
+    right: 10px; */
+}

@@ -4,19 +4,17 @@ import './styles/cuenta.css';
 function Cuenta () {
     const [userExist,setUserExist] = useState(1);
     const [emailCorrect,setEmailCorrect] = useState(null);
-    const [passwordCorrect,setPasswordCorrect] = useState(null);
-    const [passwordCorrectMin,setPasswordCorrectMin] = useState(null);
-    const [passwordCorrectMay,setPasswordCorrectMay] = useState(null);
-    const [passwordCorrectNum,setPasswordCorrectNum] = useState(null);
-    const [passwordCorrectTam,setPasswordCorrectTam] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     function handleSubmit(event){
-        if(emailCorrect===null && passwordCorrect!==null){
+        if(emailCorrect===null){
             const email = event.target.elements.email.value;
             const pass = event.target.elements.password.value;
             const data = {
                 email: `${email}`,
                 password: `${pass}`
             };
+            setLoading(true);
             fetch("http://localhost:8000/ingresar", {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -26,13 +24,16 @@ function Cuenta () {
             }).then(res => res.json())
             .then(res2 => {
                 if(res2.status!=='El usuario no existe'){
+                    console.log("el usuario no existe")
                     setUserExist(1);
                     document.cookie = res2.cookie;
                     document.cookie = res2.cookieId;
                     window.location='/';
                 }else{
+                    console.log("el usuario existe")
                     setUserExist(0);
                 }
+                setLoading(false);
             })
             .catch(error => console.error('Error:', error))
         }
@@ -41,6 +42,7 @@ function Cuenta () {
 
     function handleChange(event){
         if(event.target.name === 'email'){
+            setUserExist(1);
             const tam = String(event.target.value).length;
             var contador = 0;
             if(tam>10){
@@ -56,49 +58,10 @@ function Cuenta () {
             }else{
                 setEmailCorrect('');
             }
-        }else{
-            const tam = String(event.target.value).length;
-            var contadorMin = 0;
-            var contadorMay = 0;
-            var contadorNum = 0;
-            if(tam>=2){
-                for (let i = 0; i < tam; i++) {
-                    if(String(event.target.value).charCodeAt(i)>=97 && String(event.target.value).charCodeAt(i)<=122){
-                        contadorMin++;
-                    }
-                    if(contadorMin===0){
-                        setPasswordCorrectMin('');
-                    }else{
-                        setPasswordCorrectMin(null);
-                    }
-                    if(String(event.target.value).charCodeAt(i)>=65 && String(event.target.value).charCodeAt(i)<=90){
-                        contadorMay++;
-                    }
-                    if(contadorMay===0){
-                        setPasswordCorrectMay('');
-                    }else{
-                        setPasswordCorrectMay(null);
-                    }
-                    if(String(event.target.value).charCodeAt(i)>=48 && String(event.target.value).charCodeAt(i)<=57){
-                        contadorNum++;
-                    }
-                    if(contadorNum===0){
-                        setPasswordCorrectNum('');
-                    }else{
-                        setPasswordCorrectNum(null);
-                    }
-                    if(tam<8){
-                        setPasswordCorrectTam('');
-                    }else{
-                        setPasswordCorrectTam(null);
-                    }
-                }
-            }
-            if(contadorMin>0 && contadorMay>0 && contadorNum>0 && tam>8){
-                setPasswordCorrect('');
-            }
         }
-        // console.log(event.target.value);
+        if(event.target.name === 'password'){
+            setUserExist(1);
+        }
     }
 
     var leerCookie = function (key) {
@@ -111,8 +74,6 @@ function Cuenta () {
     }
 
     if(leerCookie("usuario")===null){
-        // document.cookie = "usuario=hugo"
-        // document.cookie = "usuario=Hugo; expires=Thu, 31 Dec 2020 12:00:00 UTC";
         return(
             <section className="bodyAcount">
                 <a href="/">
@@ -128,14 +89,10 @@ function Cuenta () {
                         <label className={`derecha ${emailCorrect===null?'correct':'incorrect'}`}>Correo incorrecto</label>
                         <input className="email" type="email" name="email" onChange={handleChange} />
                         <label className="infoText">Contraseña</label>
-                        <label className={`derecha ${passwordCorrectMin===null?'correct':'incorrect'}`}>La contraseña debe tener al menos una minúscula</label>
-                        <label className={`derecha ${passwordCorrectMay===null?'correct':'incorrect'}`}>La contraseña debe tener al menos una mayúscula</label>
-                        <label className={`derecha ${passwordCorrectNum===null?'correct':'incorrect'}`}>La contraseña debe tener al menos un número</label>
-                        <label className={`derecha ${passwordCorrectTam===null?'correct':'incorrect'}`}>La contraseña debe tener mínimo 8 caracteres</label>
                         <input className="password" type="password" name="password" onChange={handleChange} />
                         {
                             userExist===0 ?
-                                <p>Usuario o contraseña incorrectos</p>
+                                <p id="no-existe">Usuario o contraseña incorrectos</p>
                             :
                                 ''
                         }
@@ -143,16 +100,17 @@ function Cuenta () {
                     </form>
                     <a href="/nuevoCliente" id="a-crear-cuenta">Aún no tiene cuenta. ¡Crea una!</a>
                 </div>
+                <div className={loading===true?'loading-user':'loading-none'}>Loading...</div>
             </section>
         )
     }
-    return (
-        <>
-            <p>
-                Error
-            </p>
-        </>
-    )
+    // return (
+    //     <>
+    //         <p>
+    //             Error
+    //         </p>
+    //     </>
+    // )
 }
 
 export default Cuenta;

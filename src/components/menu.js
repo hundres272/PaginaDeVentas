@@ -50,7 +50,7 @@ function Menu() {
                                 <ul>
                                     <li onClick={perfil}>Perfil</li>
                                     <li onClick={pedidos}>Pedidos</li>
-                                    <li onClick={()=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                    <li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         window.location='/';}}>Cerrar sesión</li>
                                 </ul>

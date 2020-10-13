@@ -10,7 +10,7 @@ const Memorias = require('../models/memorias');
 const Audifonos = require('../models/audifonos');
 const User = require('../models/user');
 
-const listTemporal = [];
+var listTemporal = [];
 
 // GET all Productos
 router.get('/mouse', async (req, res) => {
@@ -160,7 +160,7 @@ router.post('/nuevoCliente', async (req, res) => {
       </html>`;
     const mailOptions = {
       from: "atencionalcliente@satsoporte.com.co",
-      to: "mis.matematicas2011@gmail.com",
+      to: email,
       subject: "Enviado desde Componentes.com",
       // text: `Código de verificación: ${parseInt(getRandomArbitrary(1000,2000))}`,
       html: htmlsend
@@ -214,7 +214,7 @@ router.post('/verificacion',async (req, res) => {
     res.json({status: 'verificacioni'});
   }
   function eliminarUsuarioTemporal(posicion){
-    const listAux = []
+    var listAux = []
     if(listTemporal.length!==0){
       for (let i = 0; i < listTemporal.length; i++) {
         if(i!==posicion){
@@ -233,6 +233,8 @@ router.post('/obtenerDatosUsuario', async (req, res) => {
   res.json({
     name: userExiste.name,
     email: userExiste.email,
+    departamento: userExiste._doc.departamento,
+    municipio: userExiste._doc.municipio,
   });
 });
 router.post('/ingresar', async (req, res) => {
@@ -245,6 +247,8 @@ router.post('/ingresar', async (req, res) => {
         cookie: `usuario=${userExiste.name}; expires=Thu, 31 Dec 2020 12:00:00 UTC`,
         cookieId: `usuarioid=${userExiste._id}; expires=Thu, 31 Dec 2020 12:00:00 UTC`
       });
+    }else{
+      res.json({status: 'El usuario no existe'});
     }
   }else{
     res.json({status: 'El usuario no existe'});
@@ -267,6 +271,10 @@ router.post('/carro', async (req,res) => {
     i++;
   }
   res.json({"status": "Ok"});
+});
+router.post('/updateUser', async (req, res) => {
+  console.log(req.body);
+  res.json({status: "breve"});
 });
 // router.post('/ingresar', passport.authenticate('local',{
 //   successRedirect: "/",

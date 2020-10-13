@@ -72,3 +72,23 @@ input {
     position: inherit;
     right: 0;
 }
+.loading-none {
+    display: none;
+}
+.loading-user {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(62, 175, 81, 0.788);
+    font-size: 2rem;
+}
+#no-existe {
+    background-color: rgba(255, 32, 32, 0.808);
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 1rem;
+}

@@ -44,12 +44,11 @@ function Carro () {
                         'Content-Type': 'application/json'
                     }
                 }).then(res => res.json())
-                // }).then(res => console.log("asdf"))
                 .then(res2 => {
-                    console.log(res2.status)
+                    console.log(res2.status);
+                    console.log(res2.dir);
                 })
                 .catch(error => console.error('Error:', error))
-                // console.log(data)
             }else{
                 window.location='/cuenta';
             }
