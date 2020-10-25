@@ -15,8 +15,8 @@ function Perfil(){
     const [valueName,setValueName] = useState("");
     const [valueEmail,setValueEmail] = useState("");
     const [valueDireccion,setValueDireccion] = useState("");
-    const [valueFechaNac,setValueFechaNac] = useState("");
-    const [valueDept,setValueDept] = useState("");
+    // const [valueFechaNac,setValueFechaNac] = useState("");
+    // const [valueDept,setValueDept] = useState("");
     const [valueMuni,setValueMuni] = useState("");
     const [anio,setAnio] = useState("");
     const [mesS,setMes] = useState("");
@@ -74,8 +74,8 @@ function Perfil(){
             unique=1;
         }
     }
-    document.addEventListener("load",llenarDepartamentos());
     const municipiosAux = [];
+    document.addEventListener("load",llenarDepartamentos());
     function llenarMunicipios(e){
         const deptElegido = document.getElementById("mySelectDep").value;
         for (let i = 0; i < dataDeptMun.length; i++) {
@@ -108,42 +108,43 @@ function Perfil(){
                 setValueName(res2.name);
                 setValueEmail(res2.email);
                 setEmailCopia(res2.email);
-                
                 if(res2.fechaNac!==undefined){
-                    document.getElementById("anio").value = res2.fechaNac.anio;
-                    document.getElementById("mes").value = res2.fechaNac.mes;
-                    document.getElementById("dia").value = res2.fechaNac.dia;
-                    setValueFechaNac({
-                        anio: res2.fechaNac.anio,
-                        mes: res2.fechaNac.mes,
-                        dia: res2.fechaNac.dia
-                    });
+                    document.getElementById("anio").value = res2.fechaNac.substr(0,4);
+                    document.getElementById("mes").value = parseInt(res2.fechaNac.substr(5,2));
+                    document.getElementById("dia").value = parseInt(res2.fechaNac.substr(8,2));
+                    // setValueFechaNac({
+                    //     anio: res2.fechaNac.anio,
+                    //     mes: res2.fechaNac.mes,
+                    //     dia: res2.fechaNac.dia
+                    // });
                 }
                 if(res2.departamento!==undefined){
                     document.getElementById("mySelectDep").value = res2.departamento;
-                    setValueDept(res2.departamento);
+                    // setValueDept(res2.departamento);
+                    llenarMunicipios();
                 }
                 if(res2.municipio!==undefined){
                     document.getElementById("mySelectMun").value = res2.municipio;
-                    setValueMuni(res2.municipio);
+                    // console.log(res2.municipio)
+                    // setValueMuni(res2.municipio);
                 }
                 if(res2.direccion!==undefined){
                     document.getElementById("direccion").value = res2.direccion;
-                    setValueDireccion(res2.direccion);
+                    // setValueDireccion(res2.direccion);
                 }
             })
             .catch(error => console.error('Error:', error))
             setContador(false);
         }
-        function enviarCambios(){
+        function enviarCambios(){ 
+            const anio = document.getElementById("anio").value;
+            const mes = document.getElementById("mes").value;
+            const dia = document.getElementById("dia").value;
+            const fechaNacExt = new Date(`${anio}-${parseInt(mes)>9?mes:`0${mes}`}-${parseInt(dia)>9?dia:`0${dia}`}T12:00:00Z`);
             var actualizacion = {
                 id: leerCookie("usuarioid"),
                 email: valueEmail,
-                fechaNac: {
-                    anio: document.getElementById("anio").value,
-                    mes: document.getElementById("mes").value,
-                    dia: document.getElementById("dia").value,
-                },
+                fechaNac: fechaNacExt,
                 departamento: document.getElementById("mySelectDep").value,
                 municipio: document.getElementById("mySelectMun").value,
                 direccion: document.getElementById("direccion").value
