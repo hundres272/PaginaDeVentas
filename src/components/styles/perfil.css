@@ -95,3 +95,109 @@
     /* background-color: red; */
     margin-bottom: 10px;
 }
+#cambio-pass-inv {
+    display: none;
+}
+#cambio-pass {
+    display: flex;
+    position: absolute;
+    top: 10%;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(202, 197, 197, 0.404);
+}
+.x-change-pass {
+    position: relative;
+    /* float: right; */
+    cursor: pointer;
+    text-align: right;
+    /* background-color: red; */
+}
+.changePassInv{
+    display: none;
+}
+.changePassVis{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(95, 95, 95);
+    /* position: absolute; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    padding-bottom: 40px;
+    color: white;
+}
+.alert-message-inv {
+    display: none;
+}
+.alert-message-vis {
+    display: flex;
+}
+#text-change-inv {
+    display: none;
+}
+#text-change {
+    /* position: absolute; */
+    /* top: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45vh;
+    right: 10px;
+    font-size: 2vw;
+    color: black;
+    background-color: rgba(23, 221, 23, 0.644);
+    border-radius: 20px;
+    padding: 10px;
+}
+@media screen and (max-width: 768px){
+    #perfil-centrar-contenido {
+        flex-direction: column;
+    }
+    .contenedor-interno-perfil {
+        width: 90%;
+        max-width: 400px;
+    }
+    .contenedor-interno-perfil>div>input {
+        width: 90%;
+    }
+    #fecha-nac {
+        width: auto;
+    }
+    #fecha-nac > div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        /* background-color: red; */
+    }
+    .contenedor-interno-perfil>div>select {
+        width: 100%;
+    }
+    #cambiar-contrasenia > input {
+        width: 50%;
+    }
+    #btn-guardar-cambios{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    #guardar-cambios-perfil {
+        width: 80%;
+        max-width: 400px;
+    }
+    #img-back {
+        width: 100vw;
+        left: 0;
+        right: 0;
+        position: fixed;
+        /* background-color: red; */
+    }
+}
+@media screen and (max-width: 425px){
+    .contenedor-interno-perfil {
+        width: 90%;
+    }
+}

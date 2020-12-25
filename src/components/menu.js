@@ -17,6 +17,7 @@ var leerCookie = function (key) {
 
 function Menu() {
     const [step1,setStep] = useState(0);
+    const [activar,setActivar] = useState(0);
     function menuVisible(){
         if(step1===1){
             setStep(0);
@@ -32,12 +33,22 @@ function Menu() {
     function pedidos(){
         window.location='/pedidos';
     }
+    function activarMenu(){
+        if(activar===0){
+            setActivar(1);
+        }else{
+            setActivar(0);
+        }
+    }
     return(
         <header>
             <div className="barra-cuenta">
                 <div className="icono-nombre">
                     <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="70px" />
                     <h2 id="title-componentes">Componentes</h2>
+                </div>
+                <div id="contenedor-seniales" onClick={activarMenu}>
+                    <img id="seniales" src="/images/senales.png" />
                 </div>
                 <div className="cuenta-carrito">
                     {
@@ -62,13 +73,32 @@ function Menu() {
                     </a>
                 </div>
             </div>
-            <div className="barra-productos">
+            <div className={`barra-productos ${activar===1?'activo':''}`}>
                 <ul>
                     <a href="/"><li>Home</li></a>
                     <a href="/mouse"><li>Mouse</li></a>
                     <a href="/teclados"><li>Teclados</li></a>
                     <a href="/memorias"><li>Memorias</li></a>
                     <a href="/audifonos"><li>Audífonos</li></a>
+                    {
+                        activar===1?
+                            leerCookie("usuario")===null?
+                                <>
+                                    <a href="/cuenta"><li>Cuenta</li></a>
+                                    <a href="/carro"><li>Carrito</li></a>
+                                </>
+                            :
+                                <>
+                                    <a href="/carro"><li>Carrito</li></a>
+                                    <a href="/perfil"><li onClick={perfil}>Perfil</li></a>
+                                    <a href="/pedidos"><li onClick={pedidos}>Pedidos</li></a>
+                                    <a href="/"><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        window.location='/';}}>Cerrar sesión</li></a>
+                                </>
+                        :
+                            ''
+                    }
                 </ul>
             </div>
         </header>

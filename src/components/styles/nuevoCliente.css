@@ -1,5 +1,6 @@
 :root {
     --fondo: rgb(54, 177, 85);
+    /* position: fixed; */
 }
 #crear-cuenta {
     margin: 0;
@@ -17,7 +18,7 @@
     box-shadow: 1px 1px 30px 20px rgba(1,1,1,.4);
     border-radius: 20px;
     padding: 10px 20px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 #fondo-crear-cuenta > a {
@@ -113,4 +114,22 @@
 }
 #verificar-boton:hover {
     background-color:rgba(30, 201, 81, .9);
+}
+@media screen and (max-width: 1024px){
+    #fondo-crear-cuenta {
+        width: 40%;
+    }
+    .text {
+        width: 94%;
+    }
+}
+@media screen and (max-width: 425px){
+    #fondo-crear-cuenta {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 320px){
+    #fondo-crear-cuenta {
+        width: 85%;
+    }
 }

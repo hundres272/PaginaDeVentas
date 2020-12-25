@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './styles/cuenta.css';
+import CONFIG from '../config/config';
 
 function Cuenta () {
     const [userExist,setUserExist] = useState(1);
     const [emailCorrect,setEmailCorrect] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
 
     function handleSubmit(event){
@@ -15,7 +18,7 @@ function Cuenta () {
                 password: `${pass}`
             };
             setLoading(true);
-            fetch("http://localhost:8000/ingresar", {
+            fetch(`http://${CONFIG[0].ip}:8000/ingresar`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{
@@ -34,9 +37,13 @@ function Cuenta () {
                     setUserExist(0);
                 }
                 setLoading(false);
-            })
-            .catch(error => console.error('Error:', error))
-        }
+            },
+            (error) => {
+                setLoading(false);
+                setError(error);
+            }
+            // .catch(err => console.error('Error:', err))
+            )}
         event.preventDefault();
     }
 
@@ -72,17 +79,19 @@ function Cuenta () {
             return null;
         }
     }
-
+    if (error) {
+        return <div className="error-respuesta-servidor">Error al intentar conectar. Intente más tarde.{console.log(error.message)}</div>;
+    }
     if(leerCookie("usuario")===null){
         return(
             <section className="bodyAcount">
-                <a href="/">
-                    <div className="logoAcount">
-                        <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
-                        <h2>Componentes</h2>
-                    </div>
-                </a>
                 <div id="fondo-form">
+                    <a href="/">
+                        <div className="logoAcount">
+                            <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
+                            <h2>Componentes</h2>
+                        </div>
+                    </a>
                     <h1 className="centrar-texto">Ingresar</h1>
                     <form onSubmit={handleSubmit}>
                         <label className="infoText">Correo</label>

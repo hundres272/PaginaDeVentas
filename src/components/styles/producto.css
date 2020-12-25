@@ -6,7 +6,7 @@
     align-items: center;
     border-radius: 20px;
     box-shadow: 1px 1px 3px 3px rgba(216, 196, 196, 0.4);
-    width: 15vw;
+    width: 20vw;
     min-width: 200px;
     height: 350px;
     /* height: auto; */
@@ -19,7 +19,7 @@
 }
 .h3-producto {
     text-align: center;
-    padding-bottom: 10px;
+    padding: 10px;
     height: 50px;
 }
 .producto-card img {
@@ -59,4 +59,21 @@
 }
 .enviar-carrito:hover {
     background-color: rgba(60, 224, 39, 1);
+}
+@media screen and (max-width: 1024px){
+    .producto-card {
+        width: 30vw;
+    }
+}
+@media screen and (max-width: 768px){
+    .producto-card {
+        width: 40vw;
+        min-width: 40%;
+    }
+}
+@media screen and (max-width: 425px){
+    .producto-card {
+        width: 80vw;
+        min-width: 40%;
+    }
 }

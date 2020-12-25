@@ -14,7 +14,7 @@
     box-shadow: 1px 1px 30px 10px rgba(1, 1, 1, .5);
     border-radius: 20px;
     padding: 10px 20px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 #fondo-form > a {
     text-align: center;
@@ -36,6 +36,8 @@
     color: black;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid black;
+    padding: 20px 0;
 }
 input {
     display: flex;
@@ -86,9 +88,44 @@ input {
     font-size: 2rem;
 }
 #no-existe {
-    background-color: rgba(255, 32, 32, 0.808);
+    background-color: rgba(219, 13, 13, 0.932);
     text-align: center;
     border-radius: 20px;
     padding: 5px;
     font-size: 1rem;
+}
+.error-respuesta-servidor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(160, 1, 1, 0.349);
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.5vw;
+}
+@media screen and (max-width: 1024px){
+    #fondo-form {
+        width: 40%;
+    }
+    .email {
+        width: 94%;
+    }
+    .password {
+        width: 94%;
+    }
+}
+@media screen and (max-width: 768px){
+    #fondo-form {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 425px){
+    #fondo-form {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 320px){
+    #fondo-form {
+        width: 85%;
+    }
 }

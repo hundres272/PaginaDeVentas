@@ -16,12 +16,17 @@ import ProductoMoreInfo from './components/ProductoMoreInfo';
 import NuevoCliente from './components/NuevoCliente';
 import Perfil from './components/Perfil';
 import Pedidos from './components/Pedidos';
+import CONFIG from '../src/config/config';
 
 function App() {
-  const urlMouse = 'http://localhost:8000/mouse';
-  const urlTeclados = 'http://localhost:8000/teclados';
-  const urlMemorias = 'http://localhost:8000/memorias';
-  const urlAudifonos = 'http://localhost:8000/audifonos';
+  // const urlMouse = 'http://localhost:8000/mouse';
+  // const urlTeclados = 'http://localhost:8000/teclados';
+  // const urlMemorias = 'http://localhost:8000/memorias';
+  // const urlAudifonos = 'http://localhost:8000/audifonos';
+  const urlMouse = `http://${CONFIG[0].ip}:8000/mouse`;
+  const urlTeclados = `http://${CONFIG[0].ip}:8000/teclados`;
+  const urlMemorias = `http://${CONFIG[0].ip}:8000/memorias`;
+  const urlAudifonos = `http://${CONFIG[0].ip}:8000/audifonos`;
   const [state, setState] = useState(1)
   var carrito = [];
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './styles/nuevoCliente.css';
+import CONFIG from '../config/config';
 
 function NuevoCliente(){
     const [status,setStatus] = useState(null);
@@ -23,7 +24,7 @@ function NuevoCliente(){
         setEmail(e.target.email.value);
         if(emailCorrect===null && passwordCorrect!==null){
             setLoading(true);
-            fetch('http://localhost:8000/nuevoCliente', {
+            fetch(`http://${CONFIG[0].ip}:8000/nuevoCliente`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{
@@ -48,7 +49,7 @@ function NuevoCliente(){
             email: email,
             code: codigo.value,
         };
-        fetch('http://localhost:8000/verificacion', {
+        fetch(`http://${CONFIG[0].ip}:8000/verificacion`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{
@@ -130,13 +131,13 @@ function NuevoCliente(){
     if(status===null || status==='Cliente ya existe'){
         return (
             <div id="crear-cuenta">
-                <a href="/">
-                    <div className="logoAcount">
-                        <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
-                        <h2>Componentes</h2>
-                    </div>
-                </a>
                 <div id="fondo-crear-cuenta">
+                    <a href="/">
+                        <div className="logoAcount">
+                            <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
+                            <h2>Componentes</h2>
+                        </div>
+                    </a>
                     <h1 className="centrar-texto">Registro</h1>
                     <form onSubmit={handleSubmit}>
                         <label className="infoText">Nombre</label>

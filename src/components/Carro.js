@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import ProductoCarrito from './ProductoCarrito';
 import './styles/carro.css';
+import CONFIG from '../config/config';
 
 function Carro () {
     const [priceSum,setPriceSum] = useState(0);
+    const [letra,setLetra] = useState('I');
+    const [compraCompletada,setCompraCompletada] = useState(false);
+    const [una,setUna] = useState(false);
     if(localStorage.getItem("lista")!=="[]" && localStorage.getItem("lista")!==null){
         const carrito = JSON.parse(localStorage.getItem("lista"));
     
@@ -29,26 +33,35 @@ function Carro () {
             setPriceSum(sum);
         }
 
-        function continuarPedido(){
+        async function continuarPedido(){
             if(leerCookie("usuario")!==null){
                 const carrito = JSON.parse(localStorage.getItem("lista"));
                 const data = [];
-                data.push({"user":leerCookie("usuario")});
+                data.push({"user":leerCookie("usuarioid")});
                 for (let i = 0; i < carrito.length; i++) {
                     data.push({"producto":carrito[i].id,"cantidad":carrito[i].candAdd});
                 }
-                fetch("http://localhost:8000/carro", {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers:{
-                        'Content-Type': 'application/json'
-                    }
-                }).then(res => res.json())
-                .then(res2 => {
-                    console.log(res2.status);
-                    console.log(res2.dir);
-                })
-                .catch(error => console.error('Error:', error))
+                if(letra==='C'){
+                    fetch(`http://${CONFIG[0].ip}:8000/carro`, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(res => res.json())
+                    .then(res2 => {
+                        if(res2.status==='Compra completada'){
+                            setCompraCompletada(true);
+                            setTimeout(function(){setCompraCompletada(false)},5000);
+                            localStorage.setItem("lista",JSON.stringify([]));
+                        }
+                        // console.log(res2.headers.status);
+                        // console.log("deberia borrarlo");
+                    })
+                    .catch(error => console.error('Error:', error))
+                }else{
+                    window.location = '/perfil'
+                }
             }else{
                 window.location='/cuenta';
             }
@@ -60,6 +73,31 @@ function Carro () {
                 return keyValue[2];
             } else {
                 return null;
+            }
+        }
+
+        document.addEventListener("load",datosUsuario(leerCookie("usuarioid")));
+
+        function datosUsuario(id){
+            const data = {
+                id: id
+            };
+            if(una===false){
+                fetch(`http://${CONFIG[0].ip}:8000/obtenerDatosUsuario`, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                .then(res2 => {
+                    if(res2.departamento!==undefined && res2.municipio!==undefined && res2.direccion!==undefined){
+                        setLetra('C');
+                        console.log("entro")
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                setUna(true);
             }
         }
         return(
@@ -86,6 +124,12 @@ function Carro () {
                         <button id="boton-terminar-compra" onClick={continuarPedido}>Terminar compra</button>
                     </aside>
                 </main>
+                <section id="medio-de-pago">
+
+                </section>
+                <section id={compraCompletada===true?"compra-completada":"compra-completada-inv"}>
+                    <label>Compra completa.</label>
+                </section>
             </>
         )
     }

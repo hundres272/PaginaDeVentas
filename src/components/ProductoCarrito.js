@@ -43,7 +43,7 @@ function ProductoCarrito({id,code,image,name,cant,description,price,candAdd,chan
             <div className="descripcion-producto-compra">
                 <h2>{name}</h2>
                 <p>{description}</p>
-                <p>Cantidad:<button id="menos" onClick={cantidadMenos}>-</button>
+                <p id="mas-menos">Cantidad:<button id="menos" onClick={cantidadMenos}>-</button>
                             {cantidad}
                             <button id="mas" onClick={cantidadMas}>+</button></p>
             </div>

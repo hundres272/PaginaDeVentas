@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles/ProductoMoreInfo.css';
 import Verificacion from './Verificacion';
+import CONFIG from '../config/config';
 
 function ProductoMoreInfo ({list}) {
     const keyProducto = window.location.pathname;
@@ -11,7 +12,7 @@ function ProductoMoreInfo ({list}) {
     const [valorX,setvalorX] = useState();
     const [id,setId] = useState(null);
     
-    const url = `http://localhost:8000${keyProducto}`;
+    const url = `http://${CONFIG[0].ip}:8000${keyProducto}`;
 
 
     useEffect(() => {
@@ -81,7 +82,7 @@ function ProductoMoreInfo ({list}) {
                     <p className="text-info">Precio:</p>
                     <p id="price-color" className="text-content">$ {new Intl.NumberFormat("de-DE").format(valorX)} cop</p>
                     <p className="text-info">Descripción:</p>
-                    <p className="text-content">{producto.description}</p>
+                    <p className="text-content-prod">{producto.description}</p>
                     <p className="text-info">Cantidad:</p>
                     <select id="mySelect" className="text-content" onChange={events}>
                         {num}

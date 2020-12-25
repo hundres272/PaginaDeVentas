@@ -1,0 +1,9 @@
+.producto-individual {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(118, 170, 118, 0.466);
+    margin: 10px 0;
+    padding: 10px 10px;
+    justify-content: center;
+    width: 80vw;
+}

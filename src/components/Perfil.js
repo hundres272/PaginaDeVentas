@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles/perfil.css';
 import dataDeptMun from './Departamentos/departamentos';
+import CONFIG from '../config/config';
 
 var leerCookie = function (key) {
     const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
@@ -15,8 +16,10 @@ function Perfil(){
     const [valueName,setValueName] = useState("");
     const [valueEmail,setValueEmail] = useState("");
     const [valueDireccion,setValueDireccion] = useState("");
-    // const [valueFechaNac,setValueFechaNac] = useState("");
-    // const [valueDept,setValueDept] = useState("");
+    const [cambiarPass,setCambiarPass] = useState(false);
+    const [passCoinciden,setPassCoinciden] = useState(null);
+    const [passReal,setPassReal] = useState(null);
+    const [cambiosRealizados,setCambiosRealizados] = useState(false);
     const [valueMuni,setValueMuni] = useState("");
     const [anio,setAnio] = useState("");
     const [mesS,setMes] = useState("");
@@ -32,6 +35,8 @@ function Perfil(){
         if(e.target.name==='email'){
             setValueEmail(e.target.value);
         }
+    }
+    function cambiarDireccion(e){
         if(e.target.name==='direccion'){
             setValueDireccion(e.target.value);
         }
@@ -97,7 +102,7 @@ function Perfil(){
             const data = {
                 id: leerCookie("usuarioid")
             };
-            fetch("http://localhost:8000/obtenerDatosUsuario", {
+            fetch(`http://${CONFIG[0].ip}:8000/obtenerDatosUsuario`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{
@@ -112,25 +117,17 @@ function Perfil(){
                     document.getElementById("anio").value = res2.fechaNac.substr(0,4);
                     document.getElementById("mes").value = parseInt(res2.fechaNac.substr(5,2));
                     document.getElementById("dia").value = parseInt(res2.fechaNac.substr(8,2));
-                    // setValueFechaNac({
-                    //     anio: res2.fechaNac.anio,
-                    //     mes: res2.fechaNac.mes,
-                    //     dia: res2.fechaNac.dia
-                    // });
                 }
                 if(res2.departamento!==undefined){
                     document.getElementById("mySelectDep").value = res2.departamento;
-                    // setValueDept(res2.departamento);
                     llenarMunicipios();
                 }
                 if(res2.municipio!==undefined){
                     document.getElementById("mySelectMun").value = res2.municipio;
-                    // console.log(res2.municipio)
-                    // setValueMuni(res2.municipio);
                 }
                 if(res2.direccion!==undefined){
                     document.getElementById("direccion").value = res2.direccion;
-                    // setValueDireccion(res2.direccion);
+                    setValueDireccion(res2.direccion);
                 }
             })
             .catch(error => console.error('Error:', error))
@@ -150,7 +147,7 @@ function Perfil(){
                 direccion: document.getElementById("direccion").value
             }
             setLoading(true);
-            fetch("http://localhost:8000/updateUser", {
+            fetch(`http://${CONFIG[0].ip}:8000/updateUser`, {
                 method: 'POST',
                 body: JSON.stringify(actualizacion),
                 headers:{
@@ -160,10 +157,55 @@ function Perfil(){
             .then(res2 => {
                 console.log(res2);
                 setLoading(false);
+                setCambiosRealizados(true);
+                setTimeout(function(){
+                    setCambiosRealizados(false);
+                },3000);
             })
         }
-        // }
-        // cargarDatos;
+        function cambiarPassF(){
+            setCambiarPass(true)
+        }
+        function cambiarPassF2(){
+            setCambiarPass(false)
+        }
+        function verificarPasswords(){
+            const pass1 = document.getElementById("pass1").value;
+            const pass2 = document.getElementById("pass2").value;
+            const pass3 = document.getElementById("pass3").value;
+            if(pass2===pass3){
+                const actualizacion = {
+                    id: leerCookie("usuarioid"),
+                    email: valueEmail,
+                    pass1: pass1,
+                    pass2: pass2
+                };
+                setPassCoinciden(true);
+                setLoading(true);
+                fetch(`http://${CONFIG[0].ip}:8000/changepass`, {
+                    method: 'POST',
+                    body: JSON.stringify(actualizacion),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                .then(res2 => {
+                    console.log(res2);
+                    if(res2.status==="Incorrecta"){
+                        setPassReal(false);
+                    }else if(res2.status==="Correcta") {
+                        setCambiarPass(false);
+                        setCambiosRealizados(true);
+                        setTimeout(function(){
+                            setCambiosRealizados(false);
+                        },3000);
+                    }
+                    setLoading(false);
+                })
+            }else{
+                setPassCoinciden(false);
+            }
+        }
         return (
             <>
             <div className={loading===true?'loading-user-update':'loading-none'}>Loading...</div>
@@ -203,7 +245,7 @@ function Perfil(){
                             <label>Contraseña</label>
                             <div id="cambiar-contrasenia">
                                 <input type="password" name="password" value="************" readOnly />
-                                <button>Cambiar</button>
+                                <button onClick={cambiarPassF}>Cambiar</button>
                             </div>
                         </div>
                         
@@ -225,13 +267,30 @@ function Perfil(){
                         </div>
                         <div>
                             <label>Dirección</label>
-                            <input type="text" id="direccion" name="direccion" value={valueDireccion} onChange={cambiar} />
+                            <input type="text" id="direccion" name="direccion" value={valueDireccion} onChange={cambiarDireccion} />
                         </div>
                     </div>
                 </div>
             </section>
             <section id="btn-guardar-cambios">
                 <button id="guardar-cambios-perfil" onClick={enviarCambios}>Guardar cambios</button>
+            </section>
+            <section id={cambiarPass===false?'cambio-pass-inv':'cambio-pass'}>
+                <div className={cambiarPass===false?'changePassInv':'changePassVis'}>
+                    <label type="text" className="x-change-pass" onClick={cambiarPassF2}>X</label>
+                    <label>Contraseña actual</label>
+                    <input id="pass1" type="password" name="pass-act" />
+                    <label>Nueva contraseña</label>
+                    <input id="pass2" type="password" name="pass-nue-1" />
+                    <label>Repita nueva contraseña</label>
+                    <input id="pass3" type="password" name="pass-nue-2" />
+                    <label className={passCoinciden===null|passCoinciden===true?'alert-message-inv':'alert-message-vis'}>Las contraseñas no coinciden</label>
+                    <label className={passReal===null|passReal===true?'alert-message-inv':'alert-message-vis'}>La contraseña actual es incorrecta</label>
+                    <button id="cambiarPass" onClick={verificarPasswords}>Enviar</button>
+                </div>
+            </section>
+            <section id={cambiosRealizados===false?'text-change-inv':'text-change'}> 
+                Cambios realizados
             </section>
             </>
         )

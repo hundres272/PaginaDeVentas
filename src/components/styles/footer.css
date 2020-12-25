@@ -31,3 +31,30 @@ p {
 .social-images > img:hover{
     box-shadow: 3px 8px 10px 10px rgba(0, 0, 0, 0.2);
 }
+@media screen and (max-width: 806px){
+    footer {
+        margin-top: 20px;
+    }
+    footer > h2 {
+        margin-top: 10px;
+    }
+    .social-images {
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 644px){
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        height: auto;
+        margin-top: 20px;
+    }
+    footer > h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .social-images {
+        margin-top: 10px;
+    }
+}

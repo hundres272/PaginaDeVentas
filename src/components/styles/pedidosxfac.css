@@ -1,0 +1,17 @@
+.recuadro-factura {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(126, 216, 126, 0.295);
+    margin: 20px 0px;
+    padding: 10px 0;
+    font-size: 1.1em;
+}
+.h3-fact-ped {
+    color: black;
+    /* justify-content: right; */
+}
+.sumatoria {
+    text-align: right;
+}

@@ -56,3 +56,48 @@
     width: 26px !important;
     height: 27px !important;
 }
+#mas-menos {
+    white-space: nowrap;
+    margin-bottom: 1em;
+}
+@media screen and (max-width: 1024px){
+    #marco-producto {
+        flex-direction: column;
+        margin: 10px;
+    }
+    #marco-producto > img {
+        width: 80%;
+        height: auto;
+        padding: 0;
+    }
+    .descripcion-producto-compra {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .descripcion-producto-compra > p {
+        margin: 10px 20px;
+    }
+    .descripcion-producto-precio {
+        /* display: flex; */
+        display: block;
+        width: 80%;
+        left: 10px;
+        white-space: nowrap;
+    }
+    .basurero {
+        display: flex;
+        position: relative;
+        right: -130px;
+        bottom: 35px;
+    }
+}
+@media screen and (max-width: 425px){
+    #marco-producto {
+        width: 95vw;
+        padding: 0;
+        margin: 0 2vw;
+    }
+}
