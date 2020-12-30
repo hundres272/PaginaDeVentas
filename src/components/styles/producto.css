@@ -1,5 +1,6 @@
 .producto-card {
     /* border: 1px solid red; */
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +24,7 @@
     height: 50px;
 }
 .producto-card img {
-    width: 190px;
+    max-width: 190px;
     height: 100px;
 }
 .producto-card p {
@@ -59,6 +60,38 @@
 }
 .enviar-carrito:hover {
     background-color: rgba(60, 224, 39, 1);
+}
+.editar-admin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(226, 118, 29, 0.788);
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 0 20px 0 20px;
+}
+.editar-admin:hover {
+    background-color: rgba(219, 155, 102, 0.788);
+}
+.editar-admin:focus {
+    outline: none;
+}
+.label-info-edit {
+    display: flex;
+    text-align: left;
+    width: 80%;
+}
+.item-edit {
+    height: auto;
+    background-color: rgba(255, 136, 0, 0.247);
+    padding: 2px;
+    margin: 5px 0;
+    width: 80%;
+}
+.label-true-false {
+    background-color: rgba(43, 255, 0, 0.295);
+    
 }
 @media screen and (max-width: 1024px){
     .producto-card {

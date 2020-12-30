@@ -90,8 +90,9 @@ a {
     }
     .barra-cuenta {
         display: flex;
-        justify-content: space-around;
+        justify-content: left;
         align-items: center;
+        margin-left: 2vw;
     }
     #contenedor-seniales {
         display: flex;

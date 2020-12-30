@@ -61,6 +61,7 @@ function NuevoCliente(){
             if(data.status==='Cliente agregado'){
                 document.cookie = data.cookie;
                 document.cookie = data.cookieId;
+                document.cookie = data.cookieRole;
             }
             setStatus(data.status);
         })

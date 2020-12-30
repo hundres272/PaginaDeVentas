@@ -9,7 +9,8 @@ const userSchema = new Schema({
     fechaNac: { type: Date },
     departamento: { type: String },
     municipio: { type: String },
-    direccion: { type: String }
+    direccion: { type: String },
+    role: { type: String , default: "Kdke83Jjd8UED" }
 });
 
 module.exports = mongoose.model('User', userSchema);

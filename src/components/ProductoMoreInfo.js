@@ -75,7 +75,7 @@ function ProductoMoreInfo ({list}) {
     }
     return (
         <main className="producto-principal">
-            <h2>{producto.name}</h2>
+            <h2 class="title-product-more-info">{producto.name}</h2>
             <section className="column-prod">
                 <img id="image-more-info" src={producto.image} alt={producto.name} />
                 <div className="description-prod">
@@ -88,10 +88,13 @@ function ProductoMoreInfo ({list}) {
                         {num}
                     </select>
                     {
-                        Verificacion(id)===1?
-                        <button onClick={sendProd} className="btn enviar-carrito btn-more">Añadir al carrito</button>
+                        producto.cant>0?
+                            Verificacion(id)===1?
+                            <button onClick={sendProd} className="btn enviar-carrito btn-more">Añadir al carrito</button>
+                            :
+                            <button className="btn btn-enviado">Añadido</button>
                         :
-                        <button className="btn btn-enviado">Añadido</button>
+                            <button className="btn btn-enviado">Agotado</button>
                     }
                 </div>
             </section>

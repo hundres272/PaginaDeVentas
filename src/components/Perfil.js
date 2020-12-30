@@ -279,11 +279,11 @@ function Perfil(){
                 <div className={cambiarPass===false?'changePassInv':'changePassVis'}>
                     <label type="text" className="x-change-pass" onClick={cambiarPassF2}>X</label>
                     <label>Contraseña actual</label>
-                    <input id="pass1" type="password" name="pass-act" />
+                    <input id="pass1" className="cambio-width" type="password" name="pass-act" />
                     <label>Nueva contraseña</label>
-                    <input id="pass2" type="password" name="pass-nue-1" />
+                    <input id="pass2" className="cambio-width" type="password" name="pass-nue-1" />
                     <label>Repita nueva contraseña</label>
-                    <input id="pass3" type="password" name="pass-nue-2" />
+                    <input id="pass3" className="cambio-width" type="password" name="pass-nue-2" />
                     <label className={passCoinciden===null|passCoinciden===true?'alert-message-inv':'alert-message-vis'}>Las contraseñas no coinciden</label>
                     <label className={passReal===null|passReal===true?'alert-message-inv':'alert-message-vis'}>La contraseña actual es incorrecta</label>
                     <button id="cambiarPass" onClick={verificarPasswords}>Enviar</button>

@@ -56,13 +56,14 @@ function Menu() {
                         <a href="/cuenta">
                             <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text='Cuenta' />
                         </a>:<section className="ingresoAutorizado" onClick={menuVisible}>
-                            <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text={leerCookie("usuario")} />
+                            <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text={leerCookie("usuario").split(" ")[0]} />
                             <div className={`${step1===0 ? 'menu-cuenta-invisible' : 'menu-cuenta-visible'}`}>
                                 <ul>
                                     <li onClick={perfil}>Perfil</li>
                                     <li onClick={pedidos}>Pedidos</li>
                                     <li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         window.location='/';}}>Cerrar sesión</li>
                                 </ul>
                             </div>
@@ -94,6 +95,7 @@ function Menu() {
                                     <a href="/pedidos"><li onClick={pedidos}>Pedidos</li></a>
                                     <a href="/"><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                         window.location='/';}}>Cerrar sesión</li></a>
                                 </>
                         :

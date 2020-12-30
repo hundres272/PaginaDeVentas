@@ -27,13 +27,17 @@ function Cuenta () {
             }).then(res => res.json())
             .then(res2 => {
                 if(res2.status!=='El usuario no existe'){
-                    console.log("el usuario no existe")
+                    // console.log("el usuario no existe")
                     setUserExist(1);
+                    // console.log(res2.cookie);
+                    // console.log(res2.cookieId);
+                    // console.log(res2.cookieRole);
                     document.cookie = res2.cookie;
                     document.cookie = res2.cookieId;
+                    document.cookie = res2.cookieRole;
                     window.location='/';
                 }else{
-                    console.log("el usuario existe")
+                    // console.log("el usuario existe")
                     setUserExist(0);
                 }
                 setLoading(false);

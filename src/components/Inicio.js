@@ -4,6 +4,9 @@ import './styles/inicio.css';
 function Inicio () {
     const [estado,setEstado] = useState(0);
     const [tiempo,setTiempo] = useState(5000);
+    const [mediaqueryList,setMediaqueryList] = useState(window.matchMedia("(max-width: 612px)").matches);
+    // var mediaqueryList = window.matchMedia("(max-width: 612px)");
+    console.log(mediaqueryList.matches);
     const lista = [
         {
             image: '/images/carrusel1.jpg',
@@ -15,15 +18,32 @@ function Inicio () {
             image: '/images/memorias3.jpg',
             href: '/audifonos'
         }];
+    const listaResponsive = [
+        {
+            image: '/images/carrusel1Responsive.jpg',
+            href: '/memorias'
+        },{
+            image: '/images/memorias2.webp',
+            href: '/teclados'
+        },{
+            image: '/images/memorias3.jpg',
+            href: '/audifonos'
+        }];
     function cambiarGaleria(){
         const cant = lista.length;
+        // var mediaqueryList = window.matchMedia("(max-width: 612px)");
+        const element = document.getElementById("galeria");
         if((cant-1)===estado){
             setEstado(0);
         }else{
             setEstado(estado + 1);
         }
-        const element = document.getElementById("galeria");
-        element.src = process.env.PUBLIC_URL +lista[estado].image;
+        // console.log(mediaqueryList.matches);
+        if(mediaqueryList.matches){
+            element.src = process.env.PUBLIC_URL +listaResponsive[estado].image;
+        }else{
+            element.src = process.env.PUBLIC_URL +lista[estado].image;
+        }
     }
     function atras(){
         if(parseInt(estado)>0){
@@ -52,7 +72,13 @@ function Inicio () {
             <button className="boton-flecha" onClick={atras}>{`<`}</button>
             <button className="boton-flecha boton-flecha-r" onClick={adelante}>{`>`}</button>
             <a href={lista[estado].href} className="contenedor">
-                <img id="galeria" src={process.env.PUBLIC_URL +lista[estado].image} alt="promoción" />
+                {
+                    mediaqueryList===false?
+                        <img id="galeria" src={process.env.PUBLIC_URL +lista[estado].image} alt="promoción" />
+                    :
+                        <img id="galeria efecto-responsive" src={process.env.PUBLIC_URL +listaResponsive[estado].image} alt="promoción" />
+
+                }
             </a>
         </main>
     )

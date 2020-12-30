@@ -19,7 +19,103 @@
     align-items: center;
     font-size: 2rem;
 }
+.p-c-s {
+    cursor: pointer;
+    font-size: 3em;
+}
+.fijo {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(204, 199, 199, 0.664);
+}
+.fijo-invisible {
+    display: none;
+}
+.content-new {
+    border-radius: 20px;
+    background-color: cornsilk;
+    padding: 10px 20px;
+    position: relative;
+}
+.label-new {
+    display: flex;
+    width: 100%;
+    /* background-color: red; */
+}
+.label-new:first-child {
+    margin-top: 20px;
+}
+.input-new-element {
+    padding: 2px;
+    margin: 2px;
+    margin-bottom: 10px;
+}
+.acept-cancel {
+    display: flex;
+    width: 100%;
+    margin: 15px 0;
+    /* background-color: red; */
+    justify-content: space-around;
+}
+#btn-cancel {
+    background-color: rgba(255, 0, 0, 0.507);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+#btn-cancel:hover {
+    background-color: rgba(255, 0, 0, 0.849);
+}
+#btn-acept {
+    background-color: rgba(43, 255, 0, 0.507);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+#btn-acept:hover {
+    background-color: rgba(43, 255, 0, 0.849);
+}
+#btn-cancel:focus, #btn-acept:focus {
+    outline: none;
+}
+#product-save,#product-error {
+    display: flex;
+    position: absolute;
+    background-color: rgba(170, 226, 156, 0.89);
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+#product-save-inv,#product-error-inv {
+    display: none;
+}
 @media screen and (max-width: 768px){
+    .content-new {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 0;
+    }
+    .input-new-element{
+        width: 90%;
+    }
+    .label-new {
+        margin-left: 10%;
+    } 
     .row-cards {
         width: 100%;
         padding: 0;

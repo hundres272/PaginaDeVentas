@@ -128,7 +128,7 @@ function Carro () {
 
                 </section>
                 <section id={compraCompletada===true?"compra-completada":"compra-completada-inv"}>
-                    <label>Compra completa.</label>
+                    <label>Compra completa</label>
                 </section>
             </>
         )
