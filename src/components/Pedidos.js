@@ -19,7 +19,7 @@ function Pedidos(){
         const data = {
             id: `${leerCookie("usuarioid")}`
         };
-        fetch(`http://${CONFIG[0].ip}:8000/pedidos`, {
+        fetch(`${CONFIG[0].ip}/pedidos`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{

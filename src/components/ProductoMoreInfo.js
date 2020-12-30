@@ -12,7 +12,7 @@ function ProductoMoreInfo ({list}) {
     const [valorX,setvalorX] = useState();
     const [id,setId] = useState(null);
     
-    const url = `http://${CONFIG[0].ip}:8000${keyProducto}`;
+    const url = `${CONFIG[0].ip}${keyProducto}`;
 
 
     useEffect(() => {

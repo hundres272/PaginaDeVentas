@@ -9,7 +9,7 @@ function PedidosXFacPro({idProd,cantComp,valor,fechaCompra}){
         const data = {
             id: idProd
         };
-        fetch(`http://${CONFIG[0].ip}:8000/producto`, {
+        fetch(`${CONFIG[0].ip}/producto`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{

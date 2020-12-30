@@ -102,7 +102,7 @@ function Perfil(){
             const data = {
                 id: leerCookie("usuarioid")
             };
-            fetch(`http://${CONFIG[0].ip}:8000/obtenerDatosUsuario`, {
+            fetch(`${CONFIG[0].ip}/obtenerDatosUsuario`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{
@@ -147,7 +147,7 @@ function Perfil(){
                 direccion: document.getElementById("direccion").value
             }
             setLoading(true);
-            fetch(`http://${CONFIG[0].ip}:8000/updateUser`, {
+            fetch(`${CONFIG[0].ip}/updateUser`, {
                 method: 'POST',
                 body: JSON.stringify(actualizacion),
                 headers:{
@@ -182,7 +182,7 @@ function Perfil(){
                 };
                 setPassCoinciden(true);
                 setLoading(true);
-                fetch(`http://${CONFIG[0].ip}:8000/changepass`, {
+                fetch(`${CONFIG[0].ip}/changepass`, {
                     method: 'POST',
                     body: JSON.stringify(actualizacion),
                     headers:{

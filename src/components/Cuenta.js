@@ -18,7 +18,7 @@ function Cuenta () {
                 password: `${pass}`
             };
             setLoading(true);
-            fetch(`http://${CONFIG[0].ip}:8000/ingresar`, {
+            fetch(`${CONFIG[0].ip}/ingresar`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{

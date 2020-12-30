@@ -42,7 +42,7 @@ function Carro () {
                     data.push({"producto":carrito[i].id,"cantidad":carrito[i].candAdd});
                 }
                 if(letra==='C'){
-                    fetch(`http://${CONFIG[0].ip}:8000/carro`, {
+                    fetch(`${CONFIG[0].ip}/carro`, {
                         method: 'POST',
                         body: JSON.stringify(data),
                         headers:{
@@ -83,7 +83,7 @@ function Carro () {
                 id: id
             };
             if(una===false){
-                fetch(`http://${CONFIG[0].ip}:8000/obtenerDatosUsuario`, {
+                fetch(`${CONFIG[0].ip}/obtenerDatosUsuario`, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers:{

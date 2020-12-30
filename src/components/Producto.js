@@ -75,7 +75,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
             price: document.getElementById("price").value
         };
         // console.log(data);
-        fetch(`http://${CONFIG[0].ip}:8000${window.location.pathname}/${id}`, {
+        fetch(`${CONFIG[0].ip}${window.location.pathname}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers:{
@@ -107,7 +107,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
         return (
             <div className="producto-card">
                 {
-                    leerCookie("LKDF903Kj2U")!=="Kdke83Jjd8UED"?
+                    leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?
                         <button className="editar-admin" onClick={editar}>Editar</button>
                     :
                         <div style={{display: "none"}}></div>
@@ -131,7 +131,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
         return (
             <div className="producto-card">
                 {
-                    leerCookie("LKDF903Kj2U")!=="Kdke83Jjd8UED"?
+                    leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?
                         <button className="editar-admin" onClick={guardar}>Guardar</button>
                     :
                         <div style={{display: "none"}}></div>

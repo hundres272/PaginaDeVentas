@@ -45,7 +45,7 @@ function Main ({url,title,list}) {
         }
     }
     const datosListos = datos.map((clave) => 
-        leerCookie("LKDF903Kj2U")!=="Kdke83Jjd8UED"?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>:
+        leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>:
         clave.cant>0?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>
         :""
     );
@@ -67,7 +67,7 @@ function Main ({url,title,list}) {
             price: `${document.getElementById("precio").value}`
         };
         console.log(data);
-        fetch(`http://${CONFIG[0].ip}:8000${window.location.pathname}`, {
+        fetch(`${CONFIG[0].ip}${window.location.pathname}`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{
@@ -88,7 +88,7 @@ function Main ({url,title,list}) {
         })
     }
     function codeNew(){
-        fetch(`http://${CONFIG[0].ip}:8000/cantProductos`)
+        fetch(`${CONFIG[0].ip}/cantProductos`)
         .then(res => res.json())
         .then(res2 => {
             setCodigoNuevo(parseInt(res2.value)+1);
@@ -109,7 +109,7 @@ function Main ({url,title,list}) {
             <section className="row-cards">
                 {datosListos}
                 {
-                    leerCookie("LKDF903Kj2U")!=="Kdke83Jjd8UED"?
+                    leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?
                         <div className="producto-card p-c-s" onClick={aniadir}>+</div>
                     :
                         <div style={{display: "none"}}></div>

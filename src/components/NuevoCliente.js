@@ -24,7 +24,7 @@ function NuevoCliente(){
         setEmail(e.target.email.value);
         if(emailCorrect===null && passwordCorrect!==null){
             setLoading(true);
-            fetch(`http://${CONFIG[0].ip}:8000/nuevoCliente`, {
+            fetch(`${CONFIG[0].ip}/nuevoCliente`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers:{
@@ -49,7 +49,7 @@ function NuevoCliente(){
             email: email,
             code: codigo.value,
         };
-        fetch(`http://${CONFIG[0].ip}:8000/verificacion`, {
+        fetch(`${CONFIG[0].ip}/verificacion`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{
