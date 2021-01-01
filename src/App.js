@@ -53,49 +53,46 @@ function App() {
     return (
       <>
         <main> 
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Menu />
-            <Switch>
-              <Route exact path="/">
-                <Inicio />
-              </Route>
-              <Route path="/mouse">
-                <Main title="Mouse" url={urlMouse} list={setProducto}/>
-              </Route>
-              <Route path="/teclados">
-                <Main title="Teclados" url={urlTeclados} list={setProducto} />
-              </Route>
-              <Route path="/memorias">
-                <Main title='Memorias' url={urlMemorias} list={setProducto} />
-              </Route>
-              <Route path="/audifonos">
-                <Main title="Audífonos" url={urlAudifonos} list={setProducto} />
-              </Route>
-              {/* <Route path="/cuenta">
-                <Cuenta />
-              </Route> */}
-              <Route path="/carro">
-                <Carro />
-              </Route>
-              <Route path="/productos/mouse/:Id">
-                <ProductoMoreInfo list={setProducto} />
-              </Route>
-              <Route path="/productos/teclados/:Id">
-                <ProductoMoreInfo list={setProducto} />
-              </Route>
-              <Route path="/productos/memorias/:Id">
-                <ProductoMoreInfo list={setProducto} />
-              </Route>
-              <Route path="/productos/audifonos/:Id">
-                <ProductoMoreInfo list={setProducto} />
-              </Route>
-              <Route path="/perfil">
-                <Perfil />
-              </Route>
-              <Route path="/pedidos">
-                <Pedidos />
-              </Route>
-           </Switch>
+              <Switch>
+                <Route exact path="/">
+                  <Inicio />
+                </Route>
+                <Route path="/mouse">
+                  <Main title="Mouse" url={urlMouse} list={setProducto}/>
+                </Route>
+                <Route path="/teclados">
+                  <Main title="Teclados" url={urlTeclados} list={setProducto} />
+                </Route>
+                <Route path="/memorias">
+                  <Main title='Memorias' url={urlMemorias} list={setProducto} />
+                </Route>
+                <Route path="/audifonos">
+                  <Main title="Audífonos" url={urlAudifonos} list={setProducto} />
+                </Route>
+                <Route path="/carro">
+                  <Carro />
+                </Route>
+                <Route path="/productos/mouse/:Id">
+                  <ProductoMoreInfo list={setProducto} />
+                </Route>
+                <Route path="/productos/teclados/:Id">
+                  <ProductoMoreInfo list={setProducto} />
+                </Route>
+                <Route path="/productos/memorias/:Id">
+                  <ProductoMoreInfo list={setProducto} />
+                </Route>
+                <Route path="/productos/audifonos/:Id">
+                  <ProductoMoreInfo list={setProducto} />
+                </Route>
+                <Route path="/perfil">
+                  <Perfil />
+                </Route>
+                <Route path="/pedidos">
+                  <Pedidos />
+                </Route>
+            </Switch>
           </Router>
         </main>
         <Footer />
