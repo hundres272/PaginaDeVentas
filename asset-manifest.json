@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/PaginaDeVentas/static/css/main.8d98ee4e.chunk.css",
-    "main.js": "/PaginaDeVentas/static/js/main.45a1ee2c.chunk.js",
-    "main.js.map": "/PaginaDeVentas/static/js/main.45a1ee2c.chunk.js.map",
+    "main.js": "/PaginaDeVentas/static/js/main.e872f6c5.chunk.js",
+    "main.js.map": "/PaginaDeVentas/static/js/main.e872f6c5.chunk.js.map",
     "runtime-main.js": "/PaginaDeVentas/static/js/runtime-main.f954a4fc.js",
     "runtime-main.js.map": "/PaginaDeVentas/static/js/runtime-main.f954a4fc.js.map",
-    "static/js/2.974d0956.chunk.js": "/PaginaDeVentas/static/js/2.974d0956.chunk.js",
-    "static/js/2.974d0956.chunk.js.map": "/PaginaDeVentas/static/js/2.974d0956.chunk.js.map",
+    "static/js/2.66e9a8e7.chunk.js": "/PaginaDeVentas/static/js/2.66e9a8e7.chunk.js",
+    "static/js/2.66e9a8e7.chunk.js.map": "/PaginaDeVentas/static/js/2.66e9a8e7.chunk.js.map",
     "index.html": "/PaginaDeVentas/index.html",
-    "precache-manifest.9adff0adc4738e339471a4ae2e819d39.js": "/PaginaDeVentas/precache-manifest.9adff0adc4738e339471a4ae2e819d39.js",
+    "precache-manifest.be3819dd1cdc1012127bd249af46eaa6.js": "/PaginaDeVentas/precache-manifest.be3819dd1cdc1012127bd249af46eaa6.js",
     "service-worker.js": "/PaginaDeVentas/service-worker.js",
     "static/css/main.8d98ee4e.chunk.css.map": "/PaginaDeVentas/static/css/main.8d98ee4e.chunk.css.map",
-    "static/js/2.974d0956.chunk.js.LICENSE.txt": "/PaginaDeVentas/static/js/2.974d0956.chunk.js.LICENSE.txt"
+    "static/js/2.66e9a8e7.chunk.js.LICENSE.txt": "/PaginaDeVentas/static/js/2.66e9a8e7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f954a4fc.js",
-    "static/js/2.974d0956.chunk.js",
+    "static/js/2.66e9a8e7.chunk.js",
     "static/css/main.8d98ee4e.chunk.css",
-    "static/js/main.45a1ee2c.chunk.js"
+    "static/js/main.e872f6c5.chunk.js"
   ]
 }
