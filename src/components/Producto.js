@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './styles/producto.css';
 import Verificacion from './Verificacion';
-import CONFIG from '../config/config';
+import { useLocation } from 'react-router-dom';
 
 function Producto ({id,code,image,name,cant,description,price,list}) {
-    const path = `productos${window.location.pathname}/${id}`;
+    const path = `productos${useLocation().pathname}/${id}`;
+    console.log(window.location.pathname);
+    // console.log("sss"+useLocation().pathname);
     const [valid,setValid] = useState(Verificacion(id));
     const [edit,setEdit] = useState(0);
     const [codeI,setCodeI] = useState(code);

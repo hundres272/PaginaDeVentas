@@ -4,6 +4,7 @@ import './styles/menu.css';
 // import {
 //     BrowserRouter as Link
 //   } from "react-router-dom";
+import CONFIG from '../config/config';
 
 
 var leerCookie = function (key) {
@@ -76,11 +77,11 @@ function Menu() {
             </div>
             <div className={`barra-productos ${activar===1?'activo':''}`}>
                 <ul>
-                    <a href="/"><li>Home</li></a>
-                    <a href="/mouse"><li>Mouse</li></a>
-                    <a href="/teclados"><li>Teclados</li></a>
-                    <a href="/memorias"><li>Memorias</li></a>
-                    <a href="/audifonos"><li>Audífonos</li></a>
+                    <a href={`${process.env.PUBLIC_URL}/`}><li>Home</li></a>
+                    <a href={`${process.env.PUBLIC_URL}/mouse`}><li>Mouse</li></a>
+                    <a href={`${process.env.PUBLIC_URL}/teclados`}><li>Teclados</li></a>
+                    <a href={`${process.env.PUBLIC_URL}/memorias`}><li>Memorias</li></a>
+                    <a href={`${process.env.PUBLIC_URL}/audifonos`}><li>Audífonos</li></a>
                     {
                         activar===1?
                             leerCookie("usuario")===null?

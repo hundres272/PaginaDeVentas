@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import './App.css';
 import Menu from './components/menu';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
