@@ -4,7 +4,7 @@ import './styles/menu.css';
 // import {
 //     BrowserRouter as Link
 //   } from "react-router-dom";
-import CONFIG from '../config/config';
+
 
 
 var leerCookie = function (key) {

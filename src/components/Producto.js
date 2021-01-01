@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles/producto.css';
 import Verificacion from './Verificacion';
 import { useLocation } from 'react-router-dom';
+import CONFIG from '../config/config';
 
 function Producto ({id,code,image,name,cant,description,price,list}) {
     const path = `productos${useLocation().pathname}/${id}`;
