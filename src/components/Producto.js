@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import './styles/producto.css';
 import Verificacion from './Verificacion';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CONFIG from '../config/config';
 
 function Producto ({id,code,image,name,cant,description,price,list}) {
     const path = `productos${useLocation().pathname}/${id}`;
-    console.log(window.location.pathname);
-    // console.log("sss"+useLocation().pathname);
     const [valid,setValid] = useState(Verificacion(id));
     const [edit,setEdit] = useState(0);
     const [codeI,setCodeI] = useState(code);
@@ -118,7 +116,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
                 <h3 className="h3-producto">{name}</h3>
                 <img src={process.env.PUBLIC_URL + image} alt={name} />
                 <p className="price">$ {new Intl.NumberFormat("de-DE").format(price)} cop</p>
-                <a href={path} className="btn detalle">Ver detalle</a>
+                <Link to={path} className="btn detalle">Ver detalle</Link>
                 {
                     cant>0?
                         valid===1 ?

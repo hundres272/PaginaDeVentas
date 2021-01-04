@@ -2,8 +2,13 @@ import React,{ useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Menu from './components/menu';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from "react-router-dom";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -29,7 +34,7 @@ function App() {
   const urlAudifonos = `${CONFIG[0].ip}/audifonos`;
   const [state, setState] = useState(1)
   var carrito = [];
-
+  
   function setProducto(producto){
     const getList = JSON.parse(localStorage.getItem("lista"));
     if(getList!==null){
@@ -40,7 +45,6 @@ function App() {
     // console.log(JSON.parse(localStorage.getItem("lista")));
   }
 
-  // console.log(window.location.pathname)
   if(window.location.pathname === "/cuenta" && state === 1){
     setState(2);
   }else if(window.location.pathname === "/carrito"){
@@ -53,43 +57,47 @@ function App() {
     return (
       <>
         <main> 
-          <Router basename={process.env.PUBLIC_URL}>
+          <Router>
             <Menu />
               <Switch>
                 <Route exact path="/">
                   <Inicio />
                 </Route>
-                <Route exact path="/mouse">
-                  <Main title="Mouse" url={urlMouse} list={setProducto}/>
+                <Route path="/mouse">
+                  {/* <Redirect to="/mouse" /> */}
+                  <Main title="Mouse" url={urlMouse} list={setProducto} />
                 </Route>
-                <Route exact path="/teclados">
+                <Route path="/teclados">
+                  {/* <Redirect to="/teclados" /> */}
                   <Main title="Teclados" url={urlTeclados} list={setProducto} />
                 </Route>
-                <Route exact  path="/memorias">
+                <Route path="/memorias">
+                  {/* <Redirect to="/memorias" /> */}
                   <Main title='Memorias' url={urlMemorias} list={setProducto} />
                 </Route>
-                <Route exact path="/audifonos">
+                <Route path="/audifonos">
+                  {/* <Redirect to="/audifonos" /> */}
                   <Main title="Audífonos" url={urlAudifonos} list={setProducto} />
                 </Route>
-                <Route exact path="/carro">
+                <Route path="/carro">
                   <Carro />
                 </Route>
-                <Route exact path="/productos/mouse/:Id">
+                <Route path="/productos/mouse/:Id">
                   <ProductoMoreInfo list={setProducto} />
                 </Route>
-                <Route exact path="/productos/teclados/:Id">
+                <Route path="/productos/teclados/:Id">
                   <ProductoMoreInfo list={setProducto} />
                 </Route>
-                <Route exact path="/productos/memorias/:Id">
+                <Route path="/productos/memorias/:Id">
                   <ProductoMoreInfo list={setProducto} />
                 </Route>
-                <Route exact path="/productos/audifonos/:Id">
+                <Route path="/productos/audifonos/:Id">
                   <ProductoMoreInfo list={setProducto} />
                 </Route>
-                <Route exact path="/perfil">
+                <Route path="/perfil">
                   <Perfil />
                 </Route>
-                <Route exact path="/pedidos">
+                <Route path="/pedidos">
                   <Pedidos />
                 </Route>
             </Switch>

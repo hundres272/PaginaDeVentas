@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './styles/ProductoMoreInfo.css';
 import Verificacion from './Verificacion';
 import CONFIG from '../config/config';
+import { useLocation } from 'react-router-dom';
 
 function ProductoMoreInfo ({list}) {
-    const keyProducto = window.location.pathname;
+    const keyProducto = useLocation().pathname;
     const [datos,setDatos] = useState({});
     
     const [error, setError] = useState(null);
@@ -13,6 +14,8 @@ function ProductoMoreInfo ({list}) {
     const [id,setId] = useState(null);
     
     const url = `${CONFIG[0].ip}${keyProducto}`;
+
+    console.log(url)
 
 
     useEffect(() => {
@@ -77,7 +80,7 @@ function ProductoMoreInfo ({list}) {
         <main className="producto-principal">
             <h2 class="title-product-more-info">{producto.name}</h2>
             <section className="column-prod">
-                <img id="image-more-info" src={producto.image} alt={producto.name} />
+                <img id="image-more-info" src={`${process.env.PUBLIC_URL}${producto.image}`} alt={producto.name} />
                 <div className="description-prod">
                     <p className="text-info">Precio:</p>
                     <p id="price-color" className="text-content">$ {new Intl.NumberFormat("de-DE").format(valorX)} cop</p>

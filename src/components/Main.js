@@ -5,7 +5,6 @@ import CONFIG from '../config/config';
 
 function Main ({url,title,list}) {
     const [datos,setDatos] = useState([]);
-
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [estado, setEstado] = useState(0);
@@ -15,7 +14,7 @@ function Main ({url,title,list}) {
     const [ip,setIp] = useState("");
     const [ciudad,setCiudad] = useState("");
     const [departamento,setDepartamento] = useState("");
-
+    
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
@@ -28,9 +27,9 @@ function Main ({url,title,list}) {
                 setIsLoaded(true);
                 setError(error);
             }
-        )
-    }, [])
-
+            )
+        }, []); 
+    
     if (error) {
         return <div className="loading">Estamos teniendo algunos inconvenientes por favor intentelo más tarde{console.log(error.message)}</div>;
     } else if (!isLoaded) {
@@ -49,6 +48,35 @@ function Main ({url,title,list}) {
         clave.cant>0?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>
         :""
     );
+    console.log(datos);
+    function cargarDatos(){
+        var array = [];
+        fetch(url)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setIsLoaded(true);
+                setDatos(result);
+                for (let i = 0; i < result.length; i++) {
+                    if(leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"){
+                        array.push(<Producto id={result[i]._id} key={result[i].code} code={result[i].code} image={result[i].image} name={result[i].name} cant={result[i].cant} description={result[i].description} price={result[i].price} list={list}/>);
+                    }else{
+                        // console.log(result[i].name);
+                        if(result[i].cant>0){
+                            array.push(<Producto id={result[i]._id} key={result[i].code} code={result[i].code} image={result[i].image} name={result[i].name} cant={result[i].cant} description={result[i].description} price={result[i].price} list={list}/>);
+                        }else{
+                            array.push("");
+                        }
+                    }
+                }
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            })
+        return array;
+    }
+    
     function aniadir(){
         setEstado(1);
         codeNew();
