@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles/nuevoCliente.css';
 import CONFIG from '../config/config';
+import { Link } from 'react-router-dom';
 
 function NuevoCliente(){
     const [status,setStatus] = useState(null);
@@ -133,12 +134,12 @@ function NuevoCliente(){
         return (
             <div id="crear-cuenta">
                 <div id="fondo-crear-cuenta">
-                    <a href="/">
+                    <Link to="/">
                         <div className="logoAcount">
                             <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
                             <h2>Componentes</h2>
                         </div>
-                    </a>
+                    </Link>
                     <h1 className="centrar-texto">Registro</h1>
                     <form onSubmit={handleSubmit}>
                         <label className="infoText">Nombre</label>
@@ -157,7 +158,7 @@ function NuevoCliente(){
                     <div className={status==='Cliente ya existe'?'usuario-existe':'usuario-no-existe'}>El usuario ya existe
                     <div id="cerrar" onClick={setStatus}>x</div>
                     </div>
-                    <a href="/cuenta" id="a-crear-cuenta">Ya tengo cuenta. Ingresar.</a>
+                    <Link to="/cuenta" id="a-crear-cuenta">Ya tengo cuenta. Ingresar.</Link>
                 </div>
                 <div className={loading===true?'loading-user':'loading-none'}>Loading...</div>
             </div>
@@ -170,7 +171,7 @@ function NuevoCliente(){
                 <p>
                     Ya eres parte de Componentes.
                 </p>
-                <a href="/" id="continuar-home">Continuar</a>
+                <Link to="/" id="continuar-home">Continuar</Link>
             </div>
         )
     }else if(status==='verificacion' || status==='verificacioni'){

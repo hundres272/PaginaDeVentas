@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Producto from './Producto';
 import './styles/memorias.css';
 import CONFIG from '../config/config';
+import { useLocation } from 'react-router-dom';
 
 function Main ({url,title,list}) {
+    const pathLocal = useLocation().pathname;
     const [datos,setDatos] = useState([]);
-
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [estado, setEstado] = useState(0);
@@ -66,8 +67,7 @@ function Main ({url,title,list}) {
             description: `${document.getElementById("descripcion").value}`, 
             price: `${document.getElementById("precio").value}`
         };
-        // console.log(data);
-        fetch(`${CONFIG[0].ip}${window.location.pathname}`, {
+        fetch(`${CONFIG[0].ip}${pathLocal}`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{
@@ -79,11 +79,11 @@ function Main ({url,title,list}) {
             // console.log(res2.status)
             if(res2.status==="Producto guardado"){
                 setGuardado(2);
-                setTimeout(function(){setEstado(0);window.location=`${window.location.pathname}`;},3000);
+                setTimeout(function(){setEstado(0);window.location=`${process.env.PUBLIC_URL}${pathLocal}`;},3000);
             }else{
                 obtenerDatos();
                 setErrorNuevo(1);
-                setTimeout(function(){setEstado(0);window.location=`${window.location.pathname}`;},3000);
+                setTimeout(function(){setEstado(0);window.location=`${process.env.PUBLIC_URL}${pathLocal}`;},3000);
             }
         })
     }

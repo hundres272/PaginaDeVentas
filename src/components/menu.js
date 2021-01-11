@@ -23,8 +23,7 @@ function Menu() {
             setStep(1);
         }
     }
-  
-    // console.log(document.getElementsByClassName("barra-productos"));
+
     function perfil(){
         window.location='/perfil';
     }
@@ -51,25 +50,25 @@ function Menu() {
                 <div className="cuenta-carrito">
                     {
                         leerCookie("usuario")===null?
-                        <a href="/cuenta">
+                        <Link to="/cuenta">
                             <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text='Cuenta' />
-                        </a>:<section className="ingresoAutorizado" onClick={menuVisible}>
+                        </Link>:<section className="ingresoAutorizado" onClick={menuVisible}>
                             <Icono image={process.env.PUBLIC_URL + '/images/usuario.png'} name='usuario' text={leerCookie("usuario").split(" ")[0]} />
                             <div className={`${step1===0 ? 'menu-cuenta-invisible' : 'menu-cuenta-visible'}`}>
                                 <ul>
                                     <li onClick={perfil}>Perfil</li>
                                     <li onClick={pedidos}>Pedidos</li>
-                                    <li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        window.location='/';}}>Cerrar sesión</li>
+                                    <li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        window.location=process.env.PUBLIC_URL;}}>Cerrar sesión</li>
                                 </ul>
                             </div>
                             </section>
                     }
-                    <a href="/carro">
+                    <Link to="/carro">
                         <Icono image={process.env.PUBLIC_URL + '/images/carro.png'} name='carro' text='Carro' />
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`barra-productos ${activar===1?'activo':''}`}>
@@ -83,18 +82,18 @@ function Menu() {
                         activar===1?
                             leerCookie("usuario")===null?
                                 <>
-                                    <a href="/cuenta"><li>Cuenta</li></a>
-                                    <a href="/carro"><li>Carrito</li></a>
+                                    <Link to="/cuenta"><li>Cuenta</li></Link>
+                                    <Link to="/carro"><li>Carrito</li></Link>
                                 </>
                             :
                                 <>
-                                    <a href="/carro"><li>Carrito</li></a>
-                                    <a href="/perfil"><li onClick={perfil}>Perfil</li></a>
-                                    <a href="/pedidos"><li onClick={pedidos}>Pedidos</li></a>
-                                    <a href="/"><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                                        window.location='/';}}>Cerrar sesión</li></a>
+                                    <Link to="/carro"><li>Carrito</li></Link>
+                                    <Link to="/perfil"><li onClick={perfil}>Perfil</li></Link>
+                                    <Link to="/pedidos"><li onClick={pedidos}>Pedidos</li></Link>
+                                    <Link to="/"><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                        window.location=process.env.PUBLIC_URL;}}>Cerrar sesión</li></Link>
                                 </>
                         :
                             ''

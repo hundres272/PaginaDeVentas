@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <main>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/">
               <Menu />

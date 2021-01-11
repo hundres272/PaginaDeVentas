@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './styles/cuenta.css';
 import CONFIG from '../config/config';
+import { Link } from 'react-router-dom';
 
 function Cuenta () {
     const [userExist,setUserExist] = useState(1);
     const [emailCorrect,setEmailCorrect] = useState(null);
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
 
     function handleSubmit(event){
@@ -27,18 +27,12 @@ function Cuenta () {
             }).then(res => res.json())
             .then(res2 => {
                 if(res2.status!=='El usuario no existe'){
-                    // console.log("el usuario no existe")
-                    // console.log(res2)
                     setUserExist(1);
-                    // console.log(res2.cookie);
-                    // console.log(res2.cookieId);
-                    // console.log(res2.cookieRole);
                     document.cookie = res2.cookie;
                     document.cookie = res2.cookieId;
                     document.cookie = res2.cookieRole;
-                    window.location='/';
+                    window.location=process.env.PUBLIC_URL;
                 }else{
-                    // console.log("el usuario existe")
                     setUserExist(0);
                 }
                 setLoading(false);
@@ -47,7 +41,6 @@ function Cuenta () {
                 setLoading(false);
                 setError(error);
             }
-            // .catch(err => console.error('Error:', err))
             )}
         event.preventDefault();
     }
@@ -64,7 +57,6 @@ function Cuenta () {
                     }
                 }
                 if(contador>=2){
-                    // setEmailCorrect(null);
                     setEmailCorrect(null);
                 }
             }else{
@@ -91,12 +83,12 @@ function Cuenta () {
         return(
             <section className="bodyAcount">
                 <div id="fondo-form">
-                    <a href="/">
+                    <Link to="/">
                         <div className="logoAcount">
                             <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} alt="icono" width="80vw"/>
                             <h2>Componentes</h2>
                         </div>
-                    </a>
+                    </Link>
                     <h1 className="centrar-texto">Ingresar</h1>
                     <form onSubmit={handleSubmit}>
                         <label className="infoText">Correo</label>
@@ -112,19 +104,12 @@ function Cuenta () {
                         }
                         <input className="boton-ingresar" type="submit" name="submit" />
                     </form>
-                    <a href="/nuevoCliente" id="a-crear-cuenta">Aún no tiene cuenta. ¡Crea una!</a>
+                    <Link to="/nuevoCliente" id="a-crear-cuenta">Aún no tiene cuenta. ¡Crea una!</Link>
                 </div>
                 <div className={loading===true?'loading-user':'loading-none'}>Loading...</div>
             </section>
         )
     }
-    // return (
-    //     <>
-    //         <p>
-    //             Error
-    //         </p>
-    //     </>
-    // )
 }
 
 export default Cuenta;

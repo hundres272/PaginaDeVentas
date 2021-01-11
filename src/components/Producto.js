@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './styles/producto.css';
 import Verificacion from './Verificacion';
 import CONFIG from '../config/config';
+import { useLocation } from 'react-router-dom';
 
 function Producto ({id,code,image,name,cant,description,price,list}) {
-    const path = `productos${window.location.pathname}/${id}`;
+    const pathLocation = useLocation().pathname;
+    const path = `productos${pathLocation}/${id}`;
     const [valid,setValid] = useState(Verificacion(id));
     const [edit,setEdit] = useState(0);
     const [codeI,setCodeI] = useState(code);
@@ -75,7 +77,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
             price: document.getElementById("price").value
         };
         // console.log(data);
-        fetch(`${CONFIG[0].ip}${window.location.pathname}/${id}`, {
+        fetch(`${CONFIG[0].ip}${pathLocation}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers:{
@@ -86,11 +88,11 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
         .then(res2 => {
             if(res2.status === "Task Updated"){
                 setEdit(2);
-                setTimeout(function(){window.location=`${window.location.pathname}`;},3000);
+                setTimeout(function(){window.location=`${process.env.PUBLIC_URL}${pathLocation}`;},3000);
             }else if(res2.status === "Intento fraudulento notificado"){
                 obtenerDatos();
                 setEdit(3);
-                setTimeout(function(){window.location=`${window.location.pathname}`;},3000);
+                setTimeout(function(){window.location=`${process.env.PUBLIC_URL}${pathLocation}`;},3000);
             }
         })
     }

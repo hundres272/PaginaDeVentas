@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './styles/ProductoMoreInfo.css';
 import Verificacion from './Verificacion';
 import CONFIG from '../config/config';
+import { useLocation } from 'react-router-dom';
 
 function ProductoMoreInfo ({list}) {
-    const keyProducto = window.location.pathname;
+    const keyProducto = useLocation().pathname;
     const [datos,setDatos] = useState({});
     
     const [error, setError] = useState(null);
@@ -61,7 +62,7 @@ function ProductoMoreInfo ({list}) {
         setId(null);
     }
     if(id===null){
-        const stringAux = window.location.pathname;
+        const stringAux = keyProducto;
         var posicion = 0;
         function tamanio(){
             for(var i=0; i <= stringAux.length; i++){
@@ -75,7 +76,7 @@ function ProductoMoreInfo ({list}) {
     }
     return (
         <main className="producto-principal">
-            <h2 class="title-product-more-info">{producto.name}</h2>
+            <h2 className="title-product-more-info">{producto.name}</h2>
             <section className="column-prod">
                 <img id="image-more-info" src={producto.image} alt={producto.name} />
                 <div className="description-prod">

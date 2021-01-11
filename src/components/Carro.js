@@ -60,10 +60,10 @@ function Carro () {
                     })
                     .catch(error => console.error('Error:', error))
                 }else{
-                    window.location = '/perfil'
+                    window.location = `${process.env.PUBLIC_URL}/perfil`
                 }
             }else{
-                window.location='/cuenta';
+                window.location = `${process.env.PUBLIC_URL}/cuenta`;
             }
         }
 
