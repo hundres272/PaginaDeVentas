@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b925b9306f9077e4621b274768781aa9",
+    "revision": "8a9876e7093f99179f1a8189b21fe522",
     "url": "/PaginaDeVentas/index.html"
   },
   {
-    "revision": "bb3184af72dfa6bdd547",
+    "revision": "c55d8964ab029f78368e",
     "url": "/PaginaDeVentas/static/css/main.8d98ee4e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PaginaDeVentas/static/js/2.9c8b107e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bb3184af72dfa6bdd547",
-    "url": "/PaginaDeVentas/static/js/main.e9e167be.chunk.js"
+    "revision": "c55d8964ab029f78368e",
+    "url": "/PaginaDeVentas/static/js/main.91537b4b.chunk.js"
   },
   {
     "revision": "8e66e090bf68d3a4c1e6",
