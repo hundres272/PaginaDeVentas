@@ -25,10 +25,10 @@ function Menu() {
     }
 
     function perfil(){
-        window.location='/perfil';
+        window.location=`${process.env.PUBLIC_URL}/perfil`;
     }
     function pedidos(){
-        window.location='/pedidos';
+        window.location=`${process.env.PUBLIC_URL}/pedidos`;
     }
     function activarMenu(){
         if(activar===0){
@@ -73,24 +73,24 @@ function Menu() {
             </div>
             <div className={`barra-productos ${activar===1?'activo':''}`}>
                 <ul>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/mouse"><li>Mouse</li></Link>
-                    <Link to="/teclados"><li>Teclados</li></Link>
-                    <Link to="/memorias"><li>Memorias</li></Link>
-                    <Link to="/audifonos"><li>Audífonos</li></Link>
+                    <Link to="/" onClick={()=>setActivar(0)}><li>Home</li></Link>
+                    <Link to="/mouse" onClick={()=>setActivar(0)}><li>Mouse</li></Link>
+                    <Link to="/teclados" onClick={()=>setActivar(0)}><li>Teclados</li></Link>
+                    <Link to="/memorias" onClick={()=>setActivar(0)}><li>Memorias</li></Link>
+                    <Link to="/audifonos" onClick={()=>setActivar(0)}><li>Audífonos</li></Link>
                     {
                         activar===1?
                             leerCookie("usuario")===null?
                                 <>
-                                    <Link to="/cuenta"><li>Cuenta</li></Link>
-                                    <Link to="/carro"><li>Carrito</li></Link>
+                                    <Link to="/cuenta" onClick={()=>setActivar(0)}><li>Cuenta</li></Link>
+                                    <Link to="/carro" onClick={()=>setActivar(0)}><li>Carrito</li></Link>
                                 </>
                             :
                                 <>
-                                    <Link to="/carro"><li>Carrito</li></Link>
-                                    <Link to="/perfil"><li onClick={perfil}>Perfil</li></Link>
-                                    <Link to="/pedidos"><li onClick={pedidos}>Pedidos</li></Link>
-                                    <Link to="/"><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
+                                    <Link to="/carro" onClick={()=>setActivar(0)}><li>Carrito</li></Link>
+                                    <Link to="/perfil" onClick={()=>setActivar(0)}><li onClick={perfil}>Perfil</li></Link>
+                                    <Link to="/pedidos" onClick={()=>setActivar(0)}><li onClick={pedidos}>Pedidos</li></Link>
+                                    <Link to="/" onClick={()=>setActivar(0)}><li onClick={(e)=>{document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
                                         document.cookie = "usuarioid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
                                         document.cookie = "LKDF903Kj2U=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PaginaDeVentas;";
                                         window.location=process.env.PUBLIC_URL;}}>Cerrar sesión</li></Link>
