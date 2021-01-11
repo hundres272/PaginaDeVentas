@@ -15,27 +15,26 @@ function Main ({url,title,list}) {
     const [ip,setIp] = useState("");
     const [ciudad,setCiudad] = useState("");
     const [departamento,setDepartamento] = useState("");
+    const [datosListos,setDatosListos] = useState([]);
 
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                setIsLoaded(true);
-                setDatos(result);
-            },
-            (error) => {
-                setIsLoaded(true);
-                setError(error);
-            }
-        )
-    }, [])
 
-    if (error) {
-        return <div className="loading">Estamos teniendo algunos inconvenientes por favor intentelo más tarde{console.log(error.message)}</div>;
-    } else if (!isLoaded) {
-        return <div className="loading">Loading...</div>;
-    }
+    // useEffect(() => {
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(
+    //         (result) => {
+    //             setIsLoaded(true);
+    //             setDatos(result);
+    //         },
+    //         (error) => {
+    //             setIsLoaded(true);
+    //             setError(error);
+    //         }
+    //     )
+    // }, [])
+        
+
+    // 
     var leerCookie = function (key) {
         const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
         if (keyValue) {
@@ -44,11 +43,12 @@ function Main ({url,title,list}) {
             return null;
         }
     }
-    const datosListos = datos.map((clave) => 
-        leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>:
-        clave.cant>0?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>
-        :""
-    );
+    
+    // const datosListos = datos.map((clave) => 
+    //     leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>:
+    //     clave.cant>0?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>
+    //     :""
+    // );
     function aniadir(){
         setEstado(1);
         codeNew();
@@ -66,7 +66,7 @@ function Main ({url,title,list}) {
             description: `${document.getElementById("descripcion").value}`, 
             price: `${document.getElementById("precio").value}`
         };
-        console.log(data);
+        // console.log(data);
         fetch(`${CONFIG[0].ip}${window.location.pathname}`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -103,6 +103,33 @@ function Main ({url,title,list}) {
             setDepartamento(res2.geoplugin_region);
         })
     }
+    useEffect(()=>{
+        fetch(url)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setIsLoaded(true);
+                setDatos(result);
+                const datosListosInterno = result.map((clave) => 
+                    leerCookie("LKDF903Kj2U")==="Pdk83Hes823Kjs"?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>:
+                    clave.cant>0?<Producto id={clave._id} key={clave.code} code={clave.code} image={clave.image} name={clave.name} cant={clave.cant} description={clave.description} price={clave.price} list={list}/>
+                    :""
+                );
+                setDatosListos(datosListosInterno);
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        )
+    },[title]);
+
+    if (error) {
+        return <div className="loading">Estamos teniendo algunos inconvenientes por favor intentelo más tarde{console.log(error.message)}</div>;
+    } else if (!isLoaded) {
+        return <div className="loading">Loading...</div>;
+    }
+
     return (
         <div className="row-products">
             <h1>{title}</h1>

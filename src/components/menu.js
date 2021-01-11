@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import Icono from './iconoPrincipal';
 import './styles/menu.css';
-// import {
-//     BrowserRouter as Link
-//   } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 var leerCookie = function (key) {
@@ -76,11 +74,11 @@ function Menu() {
             </div>
             <div className={`barra-productos ${activar===1?'activo':''}`}>
                 <ul>
-                    <a href="/"><li>Home</li></a>
-                    <a href="/mouse"><li>Mouse</li></a>
-                    <a href="/teclados"><li>Teclados</li></a>
-                    <a href="/memorias"><li>Memorias</li></a>
-                    <a href="/audifonos"><li>Audífonos</li></a>
+                    <Link to="/"><li>Home</li></Link>
+                    <Link to="/mouse"><li>Mouse</li></Link>
+                    <Link to="/teclados"><li>Teclados</li></Link>
+                    <Link to="/memorias"><li>Memorias</li></Link>
+                    <Link to="/audifonos"><li>Audífonos</li></Link>
                     {
                         activar===1?
                             leerCookie("usuario")===null?

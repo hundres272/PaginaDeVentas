@@ -1,7 +1,7 @@
 const GLOBALS = [
     {
-        // "ip": '192.168.1.16'
-        "ip": 'http://components-funcional.herokuapp.com'
+        // "ip": 'http://192.168.1.20:8000'
+        "ip": 'https://components-funcional.herokuapp.com'
     }
 ];
 
