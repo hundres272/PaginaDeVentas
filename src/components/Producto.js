@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles/producto.css';
 import Verificacion from './Verificacion';
 import CONFIG from '../config/config';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Producto ({id,code,image,name,cant,description,price,list}) {
     const pathLocation = useLocation().pathname;
@@ -76,7 +76,6 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
             description: document.getElementById("description").value,
             price: document.getElementById("price").value
         };
-        // console.log(data);
         fetch(`${CONFIG[0].ip}${pathLocation}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -117,7 +116,7 @@ function Producto ({id,code,image,name,cant,description,price,list}) {
                 <h3 className="h3-producto">{name}</h3>
                 <img src={process.env.PUBLIC_URL + image} alt={name} />
                 <p className="price">$ {new Intl.NumberFormat("de-DE").format(price)} cop</p>
-                <a href={path} className="btn detalle">Ver detalle</a>
+                <Link to={path} className="btn detalle">Ver detalle</Link>
                 {
                     cant>0?
                         valid===1 ?

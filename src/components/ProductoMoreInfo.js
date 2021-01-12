@@ -78,7 +78,7 @@ function ProductoMoreInfo ({list}) {
         <main className="producto-principal">
             <h2 className="title-product-more-info">{producto.name}</h2>
             <section className="column-prod">
-                <img id="image-more-info" src={producto.image} alt={producto.name} />
+                <img id="image-more-info" src={`${process.env.PUBLIC_URL}${producto.image}`} alt={producto.name} />
                 <div className="description-prod">
                     <p className="text-info">Precio:</p>
                     <p id="price-color" className="text-content">$ {new Intl.NumberFormat("de-DE").format(valorX)} cop</p>

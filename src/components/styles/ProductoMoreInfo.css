@@ -51,7 +51,7 @@
 .btn-more {
     margin: 20px 0px;
     width: 100%;
-    padding: calc(2px+3em);
+    padding: 5px;
 
 }
 .btn-more:focus {

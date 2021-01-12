@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Menu from './components/menu';
@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 import Inicio from './components/Inicio';
 import Main from './components/Main';
@@ -70,7 +69,7 @@ function App() {
               <Carro />
               <Footer />
             </Route>
-            <Route path="/productos/mouse/:Id">
+            <Route exact path="/productos/mouse/:Id">
               <Menu />
               <ProductoMoreInfo list={setProducto} />
               <Footer />
@@ -102,9 +101,6 @@ function App() {
             </Route>
             <Route path="/cuenta">
               <Cuenta />
-            </Route>
-            <Route path="/carro">
-              <Carro />
             </Route>
             <Route path="/nuevoCliente">
               <NuevoCliente />

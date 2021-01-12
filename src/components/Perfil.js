@@ -210,7 +210,7 @@ function Perfil(){
             <>
             <div className={loading===true?'loading-user-update':'loading-none'}>Loading...</div>
             <section>
-                <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} id="img-back" />
+                <img src={process.env.PUBLIC_URL + '/images/simbolo.png'} id="img-back" alt="simbolo" />
                 <div id="perfil-centrar-contenido">
                     <div className="contenedor-interno-perfil">
                         <h3>Datos personales</h3>

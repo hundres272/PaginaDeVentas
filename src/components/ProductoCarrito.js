@@ -39,7 +39,7 @@ function ProductoCarrito({id,code,image,name,cant,description,price,candAdd,chan
     }
     return (
         <div id="marco-producto">
-            <img src={image} alt={name} />
+            <img src={`${process.env.PUBLIC_URL}${image}`} alt={name} />
             <div className="descripcion-producto-compra">
                 <h2>{name}</h2>
                 <p>{description}</p>
